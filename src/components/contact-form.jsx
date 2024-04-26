@@ -14,7 +14,7 @@ const ContactSection = () => {
 
     try {
       const response = await axios.post(
-        "https://mywebsite-backend-la9g.onrender.com/api/contact",
+        "http://localhost:8000/api/contact/",
         formData
       );
 

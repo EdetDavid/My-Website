@@ -98,7 +98,7 @@ textarea:focus {
 
 /* animations */
 
-#showcase__text h2 {
+#showcase__text #heading_text {
   top: 100px;
   position: relative;
   animation-name: float-up;
@@ -107,7 +107,7 @@ textarea:focus {
   animation-fill-mode: forwards;
 }
 
-#showcase__text h1 {
+#showcase__text #heading_details {
   top: 80px;
   position: relative;
   animation-name: float-up;
@@ -117,14 +117,14 @@ textarea:focus {
   animation-delay: 100ms;
 }
 
-#showcase__text h3 {
+#showcase__text #heading_quote {
   top: 60px;
   position: relative;
   animation-name: float-up;
   animation-timing-function: ease-in-out;
   animation-duration: 2s;
   animation-fill-mode: forwards;
-  animation-delay: 300ms;
+  animation-delay: 200ms;
 }
 
 @keyframes float-up {
@@ -140,38 +140,6 @@ textarea:focus {
     transform: translateY(-100px);
   }
 }
-
-.scale-up-center {
-  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
-    both;
-  animation: scale-up-center 2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation-delay: 1ms;
-}
-
-@-webkit-keyframes scale-up-center {
-  0% {
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-  }
-
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
-
-@keyframes scale-up-center {
-  0% {
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-  }
-
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
-
 /* media queries */
 
 @media only screen and (min-width: 768px) {
@@ -186,6 +154,37 @@ textarea:focus {
     padding: 0;
     justify-content: center;
     align-items: center;
+  }
+
+  .scale-up-center {
+    -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
+      both;
+    animation: scale-up-center 2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    animation-delay: 1ms;
+  }
+
+  @-webkit-keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+    }
+
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+
+  @keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+    }
+
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
   }
 }
 
@@ -206,13 +205,19 @@ textarea:focus {
     width: 100%;
   }
 
-  #showcase #showcase__img {
+  #showcase_img-box {
     display: flex;
-
     margin: 0 auto;
     padding: 0;
     justify-content: center;
     align-items: center;
+    top: 80px;
+    position: relative;
+    animation-name: float-up;
+    animation-timing-function: ease-in-out;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-delay: 500ms;
   }
 
   #showcase #showcase__img img {
