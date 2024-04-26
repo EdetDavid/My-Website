@@ -100,6 +100,12 @@ const Navbar = () => {
               <NavLink className="dropdown-item hide-nav" to="/projects">
                 Projects
               </NavLink>
+              <NavLink
+                className="dropdown-item hide-nav"
+                to="https://mywebsite-backend-la9g.onrender.com/admin"
+              >
+                Admin
+              </NavLink>
             </div>
           </li>
         </ul>
