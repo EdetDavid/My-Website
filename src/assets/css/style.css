@@ -211,13 +211,13 @@ textarea:focus {
     padding: 0;
     justify-content: center;
     align-items: center;
-    top: 200px;
+    top: 150px;
     position: relative;
     animation-name: float-up;
     animation-timing-function: ease-in-out;
     animation-duration: 3s;
     animation-fill-mode: forwards;
-    animation-delay: 500ms;
+    animation-delay: 40ms;
   }
 
   #showcase #showcase__img img {
