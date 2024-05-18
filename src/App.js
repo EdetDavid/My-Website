@@ -9,7 +9,7 @@ import About from "./pages/about";
 import Projects from "./pages/projects";
 import AOS from "aos";
 import Footer from "./components/footer";
-// import "aos/dist/aos.css";
+import "aos/dist/aos.css";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
