@@ -7,11 +7,7 @@ import wordpressImg from "../assets/images/wordpress.png";
 
 const Skills = () => {
   return (
-    <section
-      className="container skills"
-      data-aos="fade-up"
-      data-aos-duration="3000"
-    >
+    <div className="container skills">
       <h2 className="text-center my-2 text-decoration-underline my-5">
         <a type="button" className="text-warning" href="#myskills">
           {" "}
@@ -70,7 +66,7 @@ const Skills = () => {
           />
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

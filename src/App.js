@@ -14,9 +14,12 @@ import "aos/dist/aos.css";
 const App = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    AOS.init();
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in",
+      once: false,
+    });
   }, []);
-
   useEffect(() => {
     const preloader = document.getElementById("preloader");
 

@@ -7,11 +7,7 @@ import wordpressIcon from "../assets/images/wordpress.png";
 
 const SkillsMobile = () => {
   return (
-    <section
-      className="p-lg-5 p-md-3 p-sm-2 p-xs-1"
-      data-aos="fade-up"
-      data-aos-duration="3000"
-    >
+    <section className="p-lg-5 p-md-3 p-sm-2 p-xs-1">
       <div
         id="skills__mobile"
         className="d-none flex-wrap justify-content-center align-items-center"

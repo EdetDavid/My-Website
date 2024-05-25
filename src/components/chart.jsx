@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import Chart from 'chart.js/auto';
+import React, { useEffect } from "react";
+import Chart from "chart.js/auto";
 
 const MyChartComponent = () => {
   useEffect(() => {
@@ -62,8 +62,11 @@ const MyChartComponent = () => {
 
   return (
     <section className="d-flex justify-content-center align-items-center my-5">
-      <div className="container" data-aos="fade-up" data-aos-duration="3000">
-        <div className="chart bg-dark" style={{ width: '700px', margin: '0 auto' }}>
+      <div className="container">
+        <div
+          className="chart bg-dark"
+          style={{ width: "700px", margin: "0 auto" }}
+        >
           <canvas id="barchart"></canvas>
         </div>
       </div>

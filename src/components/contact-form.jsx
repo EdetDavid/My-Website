@@ -38,9 +38,12 @@ const ContactSection = () => {
     });
   };
 
+
+  
+
   return (
     <section id="contact">
-      <div className="container" data-aos="fade-up" data-aos-duration="2000">
+      <div className="container">
         <div className="d-flex flex-column justify-content-center align-items-center img-fluid">
           {/* contact header */}
           <h2 className="contact-text shadow text-white">Contact Me</h2>
