@@ -37,7 +37,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav id="navbar" className="navbar navbar-expand-sm navbar-light bg-light">
+    <nav id="navbar" className="navbar navbar-expand-sm navbar-light bg-white">
       <>
         <NavLink className="navbar-brand mx-3 hide-nav" to="/">
           <img
