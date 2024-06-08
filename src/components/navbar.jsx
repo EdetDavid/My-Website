@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/images/nav-logo.png";
+import logoDark from "../assets/images/logo-dark.png"
+import logoLight from "../assets/images/logo-light.png"
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
@@ -40,13 +41,11 @@ const Navbar = () => {
     <nav id="navbar" className="navbar navbar-expand-sm navbar-light bg-white">
       <>
         <NavLink className="navbar-brand mx-3 hide-nav" to="/">
-          <img
-            id="nav-logo"
-            src={logo}
-            alt="Nav-bar Logo"
-            width="150"
-            height="auto"
-          />
+          {darkMode ? (
+            <img src={logoDark} alt="logo" className="logo-dark" />
+          ) : (
+            <img src={logoLight} alt="logo" className="logo-light" />
+          )}
         </NavLink>
         <button
           className="navbar-toggler d-lg-none mx-3"
