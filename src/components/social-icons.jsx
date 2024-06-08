@@ -40,7 +40,7 @@ const SocialLinks = () => {
         </a>
         <a
           className="text-decoration-none mx-3 mx-sm-2"
-          href="https://wa.me/07046959318"
+          href="https://wa.me/09091347486"
         >
           <i className="fab fa-whatsapp text-white"></i>
         </a>
