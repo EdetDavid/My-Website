@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from "react";
-import logoDark from "../assets/images/logo-dark.png"
-import logoLight from "../assets/images/logo-light.png"
+import logoDark from "../assets/images/logo-dark.png";
+import logoLight from "../assets/images/logo-light.png";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [darkMode, setDarkMode] = useState(false);
+  
 
   useEffect(() => {
     const body = document.getElementById("App");
     const textDark = document.querySelector(".text-dark");
+    const gitLink = document.querySelector("#github-link");
 
     if (darkMode) {
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#001222";
-      textDark.classList.add("text-white");
+      textDark?.classList.add("text-white");
+      gitLink?.classList.add("text-danger");
     } else {
       body.style.backgroundColor = "none";
       body.style.backgroundImage = "";
-      textDark.classList.remove("text-white");
+      textDark?.classList.remove("text-white");
+      gitLink?.classList.remove("text-danger");
     }
 
     const links = document.querySelectorAll(".hide-nav");
@@ -38,7 +42,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav id="navbar" className="navbar navbar-expand-sm navbar-light bg-white">
+    <nav
+      id="navbar" className="navbar navbar-expand-sm navbar-light bg-white shadow" >
       <>
         <NavLink className="navbar-brand mx-3 hide-nav" to="/">
           {darkMode ? (

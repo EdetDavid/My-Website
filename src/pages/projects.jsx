@@ -1,5 +1,9 @@
 import React from "react";
 
+import holdings from "../assets/images/thrive_holdings.png";
+import insurance from "../assets/images/thrive_insurance.png";
+import travels from "../assets/images/thrive_travels.png";
+import seplat_obt from "../assets/images/seplat_obt.png";
 import staffadviser from "../assets/images/staff-adviser.png";
 import aa from "../assets/images/a&a-empire.png";
 import flexbook from "../assets/images/flexbook.png";
@@ -21,7 +25,96 @@ const Projects = () => {
 
         <div className="row p-1 overflow-auto">
           {/* Project items */}
+          {/* Item 0 */}
+          <div className="d-flex justify-content-center col-md-4 my-2">
+            <div className="card" style={{ width: "18rem", height: "20rem" }}>
+              <img
+                src={holdings}
+                className="card-img-top h-100"
+                alt="thrivenig-img"
+              />
+              <div className="card-body">
+                <h4 className="card-title">Thrive Holdings Limited</h4>
+                <p className="card-text fs-5 text-lowercase">
+                  thrive group website.
+                </p>
+                <a
+                  href="https://www.thrivenig.com/"
+                  className="btn btn-secondary mb-0"
+                >
+                  Visit
+                </a>
+              </div>
+            </div>
+          </div>
           {/* Item 1 */}
+          <div className="d-flex justify-content-center col-md-4 my-2">
+            <div className="card" style={{ width: "18rem", height: "20rem" }}>
+              <img
+                src={insurance}
+                className="card-img-top h-100"
+                alt="thrivenig-img"
+              />
+              <div className="card-body">
+                <h4 className="card-title">Thrive Insurance Brokers Limited</h4>
+                <p className="card-text fs-5 text-lowercase">
+                  thrive insurance website.
+                </p>
+                <a
+                  href="https://www.insurance.thrivenig.com/"
+                  className="btn btn-secondary mb-0"
+                >
+                  Visit
+                </a>
+              </div>
+            </div>
+          </div>
+          {/* Item 2 */}
+          <div className="d-flex justify-content-center col-md-4 my-2">
+            <div className="card" style={{ width: "18rem", height: "20rem" }}>
+              <img
+                src={travels}
+                className="card-img-top h-100"
+                alt="thrivenig-img"
+              />
+              <div className="card-body">
+                <h4 className="card-title">Thrive Travels & Tours Limited</h4>
+                <p className="card-text fs-5 text-lowercase">
+                  thrive travels website.
+                </p>
+                <a
+                  href="https://www.travels.thrivenig.com/"
+                  className="btn btn-secondary mb-0"
+                >
+                  Visit
+                </a>
+              </div>
+            </div>
+          </div>
+          {/* Item 3 */}
+          <div className="d-flex justify-content-center col-md-4 my-2">
+            <div className="card" style={{ width: "18rem", height: "20rem" }}>
+              <img
+                src={seplat_obt}
+                className="card-img-top h-100"
+                alt="staff-adviser img"
+              />
+              <div className="card-body">
+                <h4 className="card-title">Seplat OBT </h4>
+                <p className="card-text fs-5 text-lowercase">
+                  Flight Booking App
+                </p>
+                <a
+                  href="https://seplat-obt.onrender.com/"
+                  className="btn btn-secondary mb-0"
+                >
+                  Visit
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Item 4 */}
           <div className="d-flex justify-content-center col-md-4 my-2">
             <div className="card" style={{ width: "18rem", height: "20rem" }}>
               <img
@@ -30,8 +123,10 @@ const Projects = () => {
                 alt="staff-adviser img"
               />
               <div className="card-body">
-                <h5 className="card-title">Staff Adviser</h5>
-                <p className="card-text fs-5">An Appointment Scheduling App</p>
+                <h4 className="card-title">Staff Adviser</h4>
+                <p className="card-text fs-5 text-lowercase">
+                  An Appointment Scheduling App
+                </p>
                 <a
                   href="https://staff-adviser.vercel.app/"
                   className="btn btn-secondary mb-0"
@@ -42,13 +137,15 @@ const Projects = () => {
             </div>
           </div>
 
-          {/* Item 2 */}
+          {/* Item 5 */}
           <div className="d-flex justify-content-center col-md-4 my-2">
             <div className="card" style={{ width: "18rem", height: "20rem" }}>
               <img src={aa} className="card-img-top h-50 img-fluid" alt="" />
               <div className="card-body">
-                <h5 className="card-title">A&A Empire</h5>
-                <p className="card-text fs-5">An ecommerce app</p>
+                <h4 className="card-title">A&A Empire</h4>
+                <p className="card-text fs-5 text-lowercase">
+                  An ecommerce app
+                </p>
                 <a
                   href="https://aa-empire.vercel.app/"
                   className="btn btn-secondary m-0"
@@ -59,13 +156,15 @@ const Projects = () => {
             </div>
           </div>
 
-          {/* Item 3 */}
+          {/* Item 6 */}
           <div className="d-flex justify-content-center col-md-4 my-2">
             <div className="card" style={{ width: "18rem", height: "20rem" }}>
               <img src={flexbook} className="card-img-top h-100" alt="..." />
               <div className="card-body">
-                <h5 className="card-title">Facebook UI</h5>
-                <p className="card-text fs-5">A real clone of facebook.</p>
+                <h4 className="card-title">Facebook UI</h4>
+                <p className="card-text fs-5 text-lowercase">
+                  A real clone of facebook.
+                </p>
                 <a
                   href="https://flexbook.onrender.com"
                   className="btn btn-secondary mb-0"
@@ -75,12 +174,12 @@ const Projects = () => {
               </div>
             </div>
           </div>
-          {/* Item 4 */}
+          {/* Item 7 */}
           <div className="d-flex justify-content-center col-md-4 my-2">
             <div className="card" style={{ width: "18rem", height: "20rem" }}>
               <img src={telemedical} className="card-img-top h-100" alt="..." />
               <div className="card-body">
-                <h5 class="card-title">Telemedical Hub</h5>
+                <h4 class="card-title">Telemedical Hub</h4>
                 <p class="card-text"> A webapp for telemedical services</p>
                 <a
                   href="https://telemedical-hub.onrender.com"
@@ -92,12 +191,12 @@ const Projects = () => {
             </div>
           </div>
 
-          {/* Item 5 */}
+          {/* Item 8 */}
           <div className="d-flex justify-content-center col-md-4 my-2">
             <div className="card" style={{ width: "18rem", height: "20rem" }}>
               <img src={albinism} className="card-img-top h-100" alt="..." />
               <div className="card-body">
-                <h5 class="card-title">Albinism AI </h5>
+                <h4 class="card-title">Albinism AI </h4>
                 <p class="card-text fs-5">
                   {" "}
                   Albinism predicting app for a population
@@ -111,12 +210,12 @@ const Projects = () => {
               </div>
             </div>
           </div>
-          {/* Item 6 */}
+          {/* Item 9 */}
           <div className="d-flex justify-content-center col-md-4 my-2">
             <div className="card" style={{ width: "18rem", height: "20rem" }}>
               <img src={task} className="card-img-top h-100" alt="..." />
               <div className="card-body">
-                <h5 class="card-title">Task Scheduler</h5>
+                <h4 class="card-title">Task Scheduler</h4>
                 <p class="card-text fs-5"> Professional Todo App</p>
                 <a
                   href="https://taskscheduler.onrender.com/"
@@ -127,12 +226,12 @@ const Projects = () => {
               </div>
             </div>
           </div>
-          {/* Item 7 */}
+          {/* Item 10 */}
           <div className="d-flex justify-content-center col-md-4 my-2">
             <div className="card" style={{ width: "18rem", height: "20rem" }}>
               <img src={shield} className="card-img-top h-100" alt="..." />
               <div className="card-body">
-                <h5 class="card-title">Sheild Finance </h5>
+                <h4 class="card-title">Sheild Finance </h4>
                 <p class="card-text fs-5"> A simple bank app</p>
                 <a
                   href="https://sheidfinance.onrender.com/"
@@ -144,12 +243,12 @@ const Projects = () => {
             </div>
           </div>
 
-          {/* Item 8 */}
+          {/* Item 11 */}
           <div className="d-flex justify-content-center col-md-4 my-2">
             <div className="card" style={{ width: "18rem", height: "20rem" }}>
               <img src={cis} className="card-img-top h-100" alt="..." />
               <div className="card-body">
-                <h5 class="card-title">CIS </h5>
+                <h4 class="card-title">CIS </h4>
                 <p class="card-text fs-5"> A ciminal records app</p>
                 <a
                   href="https://cis-5taw.onrender.com/"
@@ -161,13 +260,15 @@ const Projects = () => {
             </div>
           </div>
 
-          {/* Item 9 */}
+          {/* Item 12 */}
           <div className="d-flex justify-content-center col-md-4 my-2">
             <div className="card" style={{ width: "18rem", height: "20rem" }}>
               <img src={IOT} className="card-img-top h-100" alt="..." />
               <div className="card-body">
-                <h5 class="card-title">Internet Of Things </h5>
-                <p class="card-text fs-5">Smart Devices for homes...</p>
+                <h4 class="card-title">Internet Of Things </h4>
+                <p class="card-text fs-5 text-lowercase">
+                  Smart Devices for homes...
+                </p>
                 <a
                   href="https://internet-of-things.onrender.com/"
                   class="btn btn-secondary mb-0"

@@ -1,5 +1,4 @@
 import React from "react";
-
 const SocialLinks = () => {
   return (
     <div
@@ -7,7 +6,7 @@ const SocialLinks = () => {
       className="d-flex justify-content-center align-items-center p-3"
     >
       <p className="mb-0 fs-7 text-info">@follow me: </p>
-      <div>
+      <div className="socials__links ">
         <a
           className="text-decoration-none mx-3 mx-sm-2"
           href="https://github.com/EdetDavid"
@@ -28,7 +27,7 @@ const SocialLinks = () => {
         </a>
         <a
           className="text-decoration-none mx-3 mx-sm-2"
-          href="https://twitter.com/EdetDavid1234"
+          href="https://twitter.com/DavidEdet12345"
         >
           <i className="fab fa-twitter text-white"></i>
         </a>

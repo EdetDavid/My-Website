@@ -25,10 +25,10 @@ const Showcase = () => {
           <div id="heading_quote" className="d-flex my-4">
             <h3 className="lead text-light">
               Multidisciplinary designer who aims at becoming the world 🌍
-              <b> Best </b> Web developer.
+              <b> Best </b> Web developer. {" "}
               <a
                 id="github-link"
-                className="text-dark"
+                className="text-info text-decoration-none"
                 href="https://github.com/EdetDavid"
               >
                 github.com/EdetDavid

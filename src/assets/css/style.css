@@ -10,8 +10,9 @@
 }
 nav a:hover,
 nav .navbar-brand:hover {
-  color: #cc2b5e;
+  color: #3a1923 !important;
 }
+
 footer p:hover {
   color: #fff !important;
 }
@@ -24,6 +25,7 @@ footer p:hover {
   flex-wrap: wrap;
   position: center;
 }
+
 #contact-btn:hover {
   background-color: #cc2b5e;
   transition: 0.5s ease;
@@ -38,6 +40,7 @@ body {
   font-size: 20px;
   overflow-x: hidden;
 }
+
 .logo-light {
   background-size: contain;
   width: 125px;
@@ -317,6 +320,9 @@ textarea:focus {
     width: 500px;
     height: auto;
   }
+  .socials__links a {
+    margin: 7px !important;
+  }
 }
 @media only screen and (max-width: 580px) {
   .row {
@@ -342,6 +348,53 @@ textarea:focus {
   }
   h1 {
     font-size: larger;
+  }
+  #contact {
+    max-width: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+  #contact .contact-text {
+    font-size: 19px;
+  }
+  #contact form {
+    width: 280px;
+    font-size: 12px;
+  }
+  #contact input {
+    padding: 5px;
+  }
+  #contact input::placeholder {
+    font-size: 12px;
+  }
+  #contact textarea {
+    width: 100%;
+    margin: 0 auto;
+    height: 80px;
+  }
+  #contact button {
+    padding: 2px;
+    font-size: small;
+  }
+  #footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer p {
+    width: 50%;
+  }
+  footer p {
+    font-size: small;
+  }
+
+  #nav-logo {
+    width: 170px !important;
+    left: 25px;
+    max-height: 70px !important;
   }
 }
 .dark-shadow {
@@ -438,54 +491,7 @@ footer i:hover {
   transform: translateY(-5px);
   transition: all ease 0.5s;
 }
-@media screen and (max-width: 320px) {
-  #contact {
-    max-width: 200px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-  }
-  #contact .contact-text {
-    font-size: 19px;
-  }
-  #contact form {
-    width: 280px;
-    font-size: 12px;
-  }
-  #contact input {
-    padding: 5px;
-  }
-  #contact input::placeholder {
-    font-size: 12px;
-  }
-  #contact textarea {
-    width: 100%;
-    margin: 0 auto;
-    height: 80px;
-  }
-  #contact button {
-    padding: 2px;
-    font-size: small;
-  }
-  #footer-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  footer p {
-    width: 50%;
-  }
-  footer p {
-    font-size: small;
-  }
-  #nav-logo {
-    width: 170px !important;
-    left: 25px;
-    max-height: 70px !important;
-  }
-}
+
 textarea:focus,
 textarea.form-control:focus,
 input.form-control:focus,
@@ -508,6 +514,7 @@ input[type="number"]:focus,
   box-shadow: none !important;
   border: none !important;
 }
+
 .btn:focus {
   box-shadow: none !important;
 }
