@@ -73,7 +73,7 @@ const projectsData = [
     image: albinism,
     title: "Albinism AI",
     description: "Albinism predicting app for a population",
-    link: "https://albinism-ai.onrender.com/"
+    link: "https://albinism-ai.vercel.app/"
   },
   {
     image: task,
