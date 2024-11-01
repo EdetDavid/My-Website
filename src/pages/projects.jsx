@@ -202,7 +202,7 @@ const Projects = () => {
                   Albinism predicting app for a population
                 </p>
                 <a
-                  href="https://albinism-ai.onrender.com/"
+                  href="https://albinism-ai.vercel.app/"
                   class="btn btn-secondary mb-0"
                 >
                   Visit
