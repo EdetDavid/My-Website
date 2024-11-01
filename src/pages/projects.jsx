@@ -285,7 +285,7 @@ const Projects = () => {
                {/* Item 13 */}
           <div className="d-flex justify-content-center col-md-4 my-2">
             <div className="card" style={{ width: "18rem", height: "20rem" }}>
-              <img src={react_coursform} className="card-img-top h-100" alt="..." />
+              <img src={react_courseform} className="card-img-top h-100" alt="..." />
               <div className="card-body">
                 <h4 class="card-title">Courseform Approval App </h4>
                 <p class="card-text fs-5 text-lowercase">
