@@ -312,7 +312,7 @@ const Projects = () => {
                   django courseform approval app.
                 </p>
                 <a
-                  href="https://internet-of-things.onrender.com/"
+                  href="https://courseform-approval.vercel.app/"
                   class="btn btn-secondary mb-0"
                 >
                   Visit
