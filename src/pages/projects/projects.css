@@ -1,0 +1,125 @@
+.projects-section {
+  min-height: 100vh;
+}
+
+.project-card {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  background-color: #ffffff;
+  border: none;
+  overflow: hidden;
+  width: 100%; /* Ensure card takes full width of its container */
+  max-width: 350px; /* Maximum width for cards */
+  margin: 0 auto; /* Center cards horizontally */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+.card-img-wrapper {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.project-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.card-text {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-secondary:hover {
+  background-color: #545b62;
+}
+
+/* Responsive Styles */
+@media (max-width: 991.98px) {
+  .card-img-wrapper {
+    height: 180px;
+  }
+
+  .project-card {
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .projects-section .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .project-card {
+    margin-bottom: 2rem;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .projects-section .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-card {
+    width: 90%;
+    max-width: 280px;
+  }
+
+  .card-img-wrapper {
+    height: 160px;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .card-text {
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-secondary {
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+  }
+}
