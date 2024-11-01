@@ -1,0 +1,65 @@
+.carousel-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.slick-slider,
+.slick-list,
+.slick-track,
+.slide {
+  height: 100vh;
+}
+
+.slide {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.caption {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  animation: floatUp 1s ease-in-out forwards 1.5s;
+}
+
+/* Extra-large screens (1200px and up) */
+@media (min-width: 1200px) {
+  .caption {
+    font-size: 3rem;
+  }
+}
+
+/* Small screens (600px and down) */
+@media (max-width: 600px) {
+  .caption {
+    font-size: 1.9rem;
+    bottom: 10%;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    font-weight: 900;
+  }
+
+  .slide {
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translate(-50%, 10%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
