@@ -282,7 +282,7 @@ const Projects = () => {
           </div>
 
 
-               {/* Item 12 */}
+               {/* Item 13 */}
           <div className="d-flex justify-content-center col-md-4 my-2">
             <div className="card" style={{ width: "18rem", height: "20rem" }}>
               <img src={react_coursform} className="card-img-top h-100" alt="..." />
@@ -292,7 +292,7 @@ const Projects = () => {
                   react courseform management app.
                 </p>
                 <a
-                  href="https://internet-of-things.onrender.com/"
+                  href="https://courseform-approval.vercel.app/"
                   class="btn btn-secondary mb-0"
                 >
                   Visit
@@ -302,7 +302,7 @@ const Projects = () => {
           </div>
 
 
-               {/* Item 12 */}
+               {/* Item 14 */}
           <div className="d-flex justify-content-center col-md-4 my-2">
             <div className="card" style={{ width: "18rem", height: "20rem" }}>
               <img src={courseform} className="card-img-top h-100" alt="..." />
@@ -312,7 +312,7 @@ const Projects = () => {
                   django courseform approval app.
                 </p>
                 <a
-                  href="https://courseform-approval.vercel.app/"
+                  href="https://courseform-obp0.onrender.com/"
                   class="btn btn-secondary mb-0"
                 >
                   Visit
