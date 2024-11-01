@@ -13,6 +13,8 @@ import albinism from "../assets/images/albinism.png";
 import shield from "../assets/images/shield.png";
 import cis from "../assets/images/cis.png";
 import IOT from "../assets/images/IOT.png";
+import react_courseform from "../assets/images/react-courseform.png";
+import courseform from "../assets/images/courseform.png";
 
 const Projects = () => {
   return (
@@ -278,6 +280,48 @@ const Projects = () => {
               </div>
             </div>
           </div>
+
+
+               {/* Item 12 */}
+          <div className="d-flex justify-content-center col-md-4 my-2">
+            <div className="card" style={{ width: "18rem", height: "20rem" }}>
+              <img src={react_coursform} className="card-img-top h-100" alt="..." />
+              <div className="card-body">
+                <h4 class="card-title">Courseform Approval App </h4>
+                <p class="card-text fs-5 text-lowercase">
+                  react courseform management app.
+                </p>
+                <a
+                  href="https://internet-of-things.onrender.com/"
+                  class="btn btn-secondary mb-0"
+                >
+                  Visit
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+               {/* Item 12 */}
+          <div className="d-flex justify-content-center col-md-4 my-2">
+            <div className="card" style={{ width: "18rem", height: "20rem" }}>
+              <img src={courseform} className="card-img-top h-100" alt="..." />
+              <div className="card-body">
+                <h4 class="card-title">Course Form  </h4>
+                <p class="card-text fs-5 text-lowercase">
+                  django courseform approval app.
+                </p>
+                <a
+                  href="https://internet-of-things.onrender.com/"
+                  class="btn btn-secondary mb-0"
+                >
+                  Visit
+                </a>
+              </div>
+            </div>
+          </div>
+
+          
 
           {/* end */}
         </div>
