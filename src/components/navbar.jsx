@@ -5,22 +5,27 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [darkMode, setDarkMode] = useState(false);
-  
 
   useEffect(() => {
     const body = document.getElementById("App");
+
     const textDark = document.querySelector(".text-dark");
     const gitLink = document.querySelector("#github-link");
+    const contactBtn = document.querySelector("#contact-btn");
 
     if (darkMode) {
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#001222";
+      body.style.transition = "0.6s all ease";
       textDark?.classList.add("text-white");
+      contactBtn.classList.add("contact-btn-dark");
       gitLink?.classList.add("text-danger");
     } else {
       body.style.backgroundColor = "none";
       body.style.backgroundImage = "";
+      body.style.transition = "0.6s all ease";
       textDark?.classList.remove("text-white");
+      contactBtn.classList.remove("contact-btn-dark");
       gitLink?.classList.remove("text-danger");
     }
 
@@ -43,7 +48,9 @@ const Navbar = () => {
 
   return (
     <nav
-      id="navbar" className="navbar navbar-expand-sm navbar-light bg-white shadow" >
+      id="navbar"
+      className="navbar navbar-expand-sm navbar-light bg-white shadow"
+    >
       <>
         <NavLink className="navbar-brand mx-3 hide-nav" to="/">
           {darkMode ? (
