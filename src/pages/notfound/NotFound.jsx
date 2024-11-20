@@ -12,7 +12,7 @@ const NotFound = () => {
           <p className="lead mb-4">
             Sorry, the page you are looking for does not exist.
           </p>
-          <Link to="/" className="btn btn-primary btn-lg text-white">
+          <Link to="/" className="btn btn-primary btn-lg">
             Go to Homepage
           </Link>
         </div>
