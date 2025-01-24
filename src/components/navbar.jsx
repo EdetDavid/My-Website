@@ -113,7 +113,7 @@ const Navbar = () => {
               </NavLink>
               <NavLink
                 className="dropdown-item hide-nav"
-                to="https://mywebsite-backend-la9g.onrender.com/admin"
+                to="https://mywebsite-backend-la9g.onrender.com/admin/"
               >
                 Admin
               </NavLink>
