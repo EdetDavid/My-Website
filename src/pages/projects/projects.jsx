@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useState } from "react";
 import "./projects.css"; // Make sure to create this CSS file
 
 // Import all images
@@ -19,140 +18,181 @@ import IOT from "../../assets/images/IOT.png";
 import react_courseform from "../../assets/images/react-courseform.png";
 import courseform from "../../assets/images/courseform.png";
 
-// Projects data array
 const projectsData = [
   {
     image: holdings,
     title: "Thrive Holdings Limited",
     description: "Thrive group website.",
-    link: "https://www.thrivenig.com/"
+    link: "https://www.thrivenig.com/",
+    category: "corporate",
   },
   {
     image: insurance,
     title: "Thrive Insurance Brokers Limited",
     description: "Thrive insurance website.",
-    link: "https://www.insurance.thrivenig.com/"
+    link: "https://www.insurance.thrivenig.com/",
+    category: "corporate",
   },
   {
     image: travels,
     title: "Thrive Travels & Tours Limited",
     description: "Thrive travels website.",
-    link: "https://www.travels.thrivenig.com/"
+    link: "https://www.travels.thrivenig.com/",
+    category: "corporate",
   },
   {
     image: seplat_obt,
     title: "Seplat OBT",
     description: "Flight Booking App",
-    link: "https://seplat-obt.onrender.com/"
+    link: "https://seplat-obt.onrender.com/",
+    category: "corporate",
   },
   {
     image: staffadviser,
     title: "Staff Adviser",
     description: "An Appointment Scheduling App",
-    link: "https://staff-adviser.vercel.app/"
+    link: "https://staff-adviser.vercel.app/",
+    category: "web",
   },
   {
     image: aa,
     title: "A&A Empire",
     description: "An ecommerce app",
-    link: "https://aa-empire.vercel.app/"
+    link: "https://aa-empire.vercel.app/",
+    category: "web",
   },
   {
     image: flexbook,
     title: "Facebook UI",
     description: "A real clone of facebook.",
-    link: "https://flexbook.onrender.com"
+    link: "https://flexbook.onrender.com",
+    category: "web",
   },
   {
     image: telemedical,
     title: "Telemedical Hub",
     description: "A webapp for telemedical services",
-    link: "https://telemedical-hub.onrender.com"
+    link: "https://telemedical-hub.onrender.com",
+    category: "web",
   },
   {
     image: albinism,
     title: "Albinism AI",
     description: "Albinism predicting app for a population",
-    link: "https://albinism-ai.onrender.com/"
+    link: "https://albinism-ai.onrender.com/",
+    category: "web",
   },
   {
     image: task,
     title: "Task Scheduler",
     description: "Professional Todo App",
-    link: "https://taskscheduler.onrender.com/"
+    link: "https://taskscheduler.onrender.com/",
+    category: "web",
   },
   {
     image: shield,
     title: "Shield Finance",
     description: "A simple bank app",
-    link: "https://sheidfinance.onrender.com/"
+    link: "https://sheidfinance.onrender.com/",
+    category: "web",
   },
   {
     image: cis,
     title: "CIS",
     description: "A criminal records app",
-    link: "https://cis-5taw.onrender.com/"
+    link: "https://cis-5taw.onrender.com/",
+    category: "web",
   },
   {
     image: IOT,
     title: "Internet Of Things",
     description: "Smart Devices for homes...",
-    link: "https://internet-of-things.onrender.com/"
+    link: "https://internet-of-things.onrender.com/",
+    category: "web",
   },
   {
     image: react_courseform,
     title: "Courseform",
     description: "React courseform management app.",
-    link: "https://courseform-approval.vercel.app/"
+    link: "https://courseform-approval.vercel.app/",
+    category: "web",
   },
   {
     image: courseform,
     title: "Course Form",
     description: "Django courseform approval app.",
-    link: "https://courseform-obp0.onrender.com/"
-  }
+    link: "https://courseform-obp0.onrender.com/",
+    category: "web",
+  },
 ];
 
-// Project Card Component
 const ProjectCard = ({ project }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div className="col-12 col-sm-6 col-lg-4 d-flex justify-content-center mb-4">
-      <div className="card project-card">
-        <div className="card-img-wrapper">
-          <img
-            src={project.image}
-            className="card-img-top"
-            alt={project.title}
-          />
-        </div>
-        <div className="card-body d-flex flex-column">
-          <h5 className="card-title">{project.title}</h5>
-          <p className="card-text flex-grow-1">{project.description}</p>
-          <a
-            href={project.link}
-            className="btn btn-secondary mt-auto"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Visit
-          </a>
+    <div className="project-item">
+      <div
+        className={`project-card ${isHovered ? "hovered" : ""}`}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div className="project-image">
+          <img src={project.image} alt={project.title} />
+          <div className="project-overlay">
+            <div className="project-details">
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <div className="project-links">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="visit-btn"
+                >
+                  <span>Visit Site</span>
+                  <i className="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-// Main Projects Component
 const Projects = () => {
+  const [filter, setFilter] = useState("all");
+
+  const categories = ["all", "corporate", "web", "mobile"];
+
+  const filteredProjects =
+    filter === "all"
+      ? projectsData
+      : projectsData.filter((project) => project.category === filter);
+
   return (
     <section className="projects-section">
-      <div className="container py-5">
-        <h1 className="display-4 text-white text-center text-uppercase mb-5">
-          My Projects
-        </h1>
-        
-        <div className="row">
-          {projectsData.map((project, index) => (
+      <div className="projects-container">
+        <div className="section-header">
+          <h1>My Projects</h1>
+          <p>Explore my latest works and creative endeavors</p>
+        </div>
+
+        <div className="filters">
+          {categories.map((category) => (
+            <button
+              key={category}
+              className={`filter-btn ${filter === category ? "active" : ""}`}
+              onClick={() => setFilter(category)}
+            >
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </button>
+          ))}
+        </div>
+
+        <div className="projects-grid">
+          {filteredProjects.map((project, index) => (
             <ProjectCard key={index} project={project} />
           ))}
         </div>

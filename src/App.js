@@ -4,13 +4,14 @@ import "./App.css";
 import "./assets/css/about.css";
 import "./assets/css/style.css";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/home";
-import About from "./pages/about";
+import Home from "./pages/home/home";
+import About from "./pages/about/About";
 import Projects from "./pages/projects/projects";
 import NotFound from "./pages/notfound/NotFound";
 import AOS from "aos";
 import Footer from "./components/footer";
 import "aos/dist/aos.css";
+import { DarkModeProvider } from './context/DarkModeContext';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -31,22 +32,24 @@ const App = () => {
   }, []);
 
   return (
-    <div id="App">
-      {loading ? (
-        <div id="preloader"></div>
-      ) : (
-        <>
-          <Navbar />
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/about" element={<About />} />
-            <Route exact path="/projects" element={<Projects />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <Footer />
-        </>
-      )}
-    </div>
+    <DarkModeProvider>
+      <div id="App">
+        {loading ? (
+          <div id="preloader"></div>
+        ) : (
+          <>
+            <Navbar />
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/about" element={<About />} />
+              <Route exact path="/projects" element={<Projects />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <Footer />
+          </>
+        )}
+      </div>
+    </DarkModeProvider>
   );
 };
 

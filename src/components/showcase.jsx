@@ -12,7 +12,9 @@ const Showcase = () => {
         <div id="showcase__text" className="col-md-6 justify-content-start">
           {/* Heading */}
           <div id="heading_text" className="d-flex my-4">
-            <h2 id="header-text" className="text-dark m-2 my-4">Hi, I'm David</h2>
+            <h2 id="header-text" className="text-dark m-2 my-4">
+              Hi, I'm David
+            </h2>
           </div>
           {/* <!-- Heading Details  --> */}
           <div id="heading_details" className="d-flex my-4">
@@ -25,7 +27,7 @@ const Showcase = () => {
           <div id="heading_quote" className="d-flex my-4">
             <h3 className="lead text-light">
               Multidisciplinary designer who aims at becoming the world 🌍
-              <b> Best </b> Web developer. {" "}
+              <b> Best </b> Web developer.{" "}
               <a
                 id="github-link"
                 className="text-info text-decoration-none"

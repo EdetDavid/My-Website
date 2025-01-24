@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useDarkMode } from "../context/DarkModeContext";
 import logoDark from "../assets/images/logo-dark.png";
 import logoLight from "../assets/images/logo-light.png";
+import resumePdf from "../assets/documents/Edet_David_Nsikak.pdf";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const { darkMode, setDarkMode } = useDarkMode();
+  const [isDownloading, setIsDownloading] = useState(false);
 
   useEffect(() => {
     const body = document.getElementById("App");
-
     const textDark = document.querySelector(".text-dark");
     const gitLink = document.querySelector("#github-link");
     const contactBtn = document.querySelector("#contact-btn");
@@ -18,32 +20,55 @@ const Navbar = () => {
       body.style.backgroundColor = "#001222";
       body.style.transition = "0.6s all ease";
       textDark?.classList.add("text-white");
-      contactBtn.classList.add("contact-btn-dark");
+      contactBtn?.classList.add("contact-btn-dark");
       gitLink?.classList.add("text-danger");
     } else {
       body.style.backgroundColor = "none";
       body.style.backgroundImage = "";
       body.style.transition = "0.6s all ease";
       textDark?.classList.remove("text-white");
-      contactBtn.classList.remove("contact-btn-dark");
+      contactBtn?.classList.remove("contact-btn-dark");
       gitLink?.classList.remove("text-danger");
     }
 
     const links = document.querySelectorAll(".hide-nav");
-
-    for (var i = 0; i < links.length; i++) {
-      links[i].addEventListener("click", function () {
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
         const navbarCollapse = document.querySelector(".navbar-collapse");
-
         if (navbarCollapse.classList.contains("show")) {
           navbarCollapse.classList.remove("show");
         }
       });
-    }
+    });
   }, [darkMode]);
 
   const handleDarkModeToggle = () => {
     setDarkMode(!darkMode);
+  };
+
+  const handleDownloadResume = async () => {
+    setIsDownloading(true);
+    try {
+      const response = await fetch(resumePdf);
+      if (!response.ok) {
+        throw new Error("Failed to download resume");
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Edet_David_Nsikak.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error downloading resume:", error);
+      alert("Failed to download resume. Please try again.");
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   return (
@@ -51,26 +76,26 @@ const Navbar = () => {
       id="navbar"
       className="navbar navbar-expand-sm navbar-light bg-white shadow"
     >
-      <>
-        <NavLink className="navbar-brand mx-3 hide-nav" to="/">
-          {darkMode ? (
-            <img src={logoDark} alt="logo" className="logo-dark" />
-          ) : (
-            <img src={logoLight} alt="logo" className="logo-light" />
-          )}
-        </NavLink>
-        <button
-          className="navbar-toggler d-lg-none mx-3"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapsibleNavId"
-          aria-controls="collapsibleNavId"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-      </>
+      <NavLink className="navbar-brand mx-3 hide-nav" to="/">
+        {darkMode ? (
+          <img src={logoDark} alt="logo" className="logo-dark" />
+        ) : (
+          <img src={logoLight} alt="logo" className="logo-light" />
+        )}
+      </NavLink>
+
+      <button
+        className="navbar-toggler d-lg-none mx-3"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+
       <div
         className="collapse navbar-collapse w-100 px-5 justify-content-between align-content-center"
         id="collapsibleNavId"
@@ -101,7 +126,7 @@ const Navbar = () => {
             >
               Menu
             </NavLink>
-            <div className="dropdown-menu mb-2 d" aria-labelledby="dropdownId">
+            <div className="dropdown-menu mb-2" aria-labelledby="dropdownId">
               <NavLink className="dropdown-item hide-nav" to="/">
                 Home
               </NavLink>
@@ -120,7 +145,26 @@ const Navbar = () => {
             </div>
           </li>
         </ul>
-        <div className="d-inline-flex">
+
+        <div className="d-inline-flex align-items-center">
+          {/* Resume Download Button */}
+          <button
+            onClick={handleDownloadResume}
+            className="btn resume-btn me-2 hide-nav"
+            disabled={isDownloading}
+          >
+            {isDownloading ? (
+              <span>
+                <i className="fas fa-spinner fa-spin me-1"></i> Downloading...
+              </span>
+            ) : (
+              <span>
+                <i className="fas fa-download me-1"></i> Resume
+              </span>
+            )}
+          </button>
+
+          {/* Dark Mode Toggle Button */}
           <button
             id="darkmode-btn"
             type="button"
@@ -131,11 +175,12 @@ const Navbar = () => {
           >
             <i
               className={
-                darkMode ? "fa fa-sun text-white" : "fa fa-moon text-white "
+                darkMode ? "fa fa-sun text-white" : "fa fa-moon text-white"
               }
             ></i>
           </button>
 
+          {/* Contact Button */}
           <a href="#contact">
             <button
               type="button"
