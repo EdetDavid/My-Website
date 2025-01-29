@@ -380,7 +380,7 @@ const About = () => {
               <FaGithub style={iconStyle} />
             </motion.a>
             <motion.a
-              href="https://www.linkedin.com/in/edet-david-b2a85a266"
+              href="https://www.linkedin.com/in/david-edet-19413024a"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.2, rotate: 360 }}
