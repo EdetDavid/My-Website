@@ -33,7 +33,7 @@ const SocialLinks = () => {
         </a>
         <a
           className="text-decoration-none mx-3 mx-sm-2"
-          href="https://www.linkedin.com/in/edet-david-b2a85a266"
+          href="https://www.linkedin.com/in/david-edet-19413024a"
         >
           <i className="fab fa-linkedin text-white"></i>
         </a>
