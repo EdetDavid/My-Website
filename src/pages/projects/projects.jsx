@@ -18,6 +18,13 @@ import IOT from "../../assets/images/IOT.png";
 import react_courseform from "../../assets/images/react-courseform.png";
 import courseform from "../../assets/images/courseform.png";
 
+// Graphics Photos
+import logo1 from "../../assets/graphics/Blex.png";
+import flyer1 from "../../assets/graphics/kagali.png";
+import brochure1 from "../../assets/graphics/elite.png";
+import flourish from "../../assets/graphics/Florish.png";
+import fragrance from "../../assets/graphics/Fragrance&Style.png";
+
 const projectsData = [
   {
     image: holdings,
@@ -124,47 +131,110 @@ const projectsData = [
     link: "https://courseform-obp0.onrender.com/",
     category: "web",
   },
-];
 
+  // Graphics Section
+  {
+    image: logo1,
+    title: "Company Branding",
+    description: "Modern logo design for tech startup",
+    link: "#",
+    category: "graphics",
+  },
+  {
+    image: flyer1,
+    title: "Event Promotion",
+    description: "Marketing flyer design",
+    link: "#",
+    category: "graphics",
+  },
+
+  {
+    image: fragrance,
+    title: "Fragrance & Style",
+    description: "Business brochure design",
+    link: "#",
+    category: "graphics",
+  },
+  {
+    image: flourish,
+    title: "Corporate Brochure",
+    description: "Business brochure design",
+    link: "#",
+    category: "graphics",
+  },
+];
 const ProjectCard = ({ project }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [showLightbox, setShowLightbox] = useState(false);
 
   return (
-    <div className="project-item">
+    <div className="project-item" data-category={project.category}>
       <div
         className={`project-card ${isHovered ? "hovered" : ""}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="project-image">
-          <img src={project.image} alt={project.title} />
+          <img
+            src={project.image}
+            alt={project.title}
+            onClick={() =>
+              project.category === "graphics" && setShowLightbox(true)
+            }
+            style={{
+              cursor: project.category === "graphics" ? "zoom-in" : "pointer",
+            }}
+          />
           <div className="project-overlay">
             <div className="project-details">
               <h3>{project.title}</h3>
               <p>{project.description}</p>
-              <div className="project-links">
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+              {project.category !== "graphics" ? (
+                <div className="project-links">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="visit-btn"
+                  >
+                    <span>Visit Site</span>
+                    <i className="fas fa-external-link-alt"></i>
+                  </a>
+                </div>
+              ) : (
+                <button
                   className="visit-btn"
+                  onClick={() => setShowLightbox(true)}
                 >
-                  <span>Visit Site</span>
-                  <i className="fas fa-external-link-alt"></i>
-                </a>
-              </div>
+                  <span>View Full Size</span>
+                  <i className="fas fa-search-plus"></i>
+                </button>
+              )}
             </div>
           </div>
         </div>
       </div>
+
+      {showLightbox && (
+        <div className="lightbox" onClick={() => setShowLightbox(false)}>
+          <div className="lightbox-content">
+            <img src={project.image} alt={project.title} />
+            <button
+              className="lightbox-close"
+              onClick={() => setShowLightbox(false)}
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 const Projects = () => {
   const [filter, setFilter] = useState("all");
-
-  const categories = ["all", "corporate", "web", "mobile"];
+  const categories = ["all", "corporate", "web", "graphics"];
 
   const filteredProjects =
     filter === "all"

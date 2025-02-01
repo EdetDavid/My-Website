@@ -73,7 +73,8 @@
 
 .skill-card {
   background: var(--card-bg);
-  --webkit-backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--card-border);
   border-radius: 15px;
   padding: 2rem;
@@ -102,12 +103,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 2rem;
-  padding: 1rem;
+  padding: 1rem; 
 }
 
 .interest-card {
   background: var(--card-bg);
-  --webkit-backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--card-border);
   border-radius: 12px;
   padding: 1.5rem;
@@ -155,7 +157,8 @@
 .interests,
 .social {
   background: rgba(255, 255, 255, 0.05);
-  --webkit-backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
   margin-bottom: 3rem;
   padding: 2rem;
@@ -226,7 +229,8 @@
 
 .experience {
   background: rgba(255, 255, 255, 0.05);
-  --webkit-backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
   margin-bottom: 3rem;
   padding: 2rem;
