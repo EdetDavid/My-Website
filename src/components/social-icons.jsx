@@ -5,7 +5,7 @@ const SocialLinks = () => {
       id="socials"
       className="d-flex justify-content-center align-items-center p-3"
     >
-      <p className="mb-0 fs-7 text-info">@follow me: </p>
+      <p className="mb-0 fs-7 text-info">follow me @: </p>
       <div className="socials__links ">
         <a
           className="text-decoration-none mx-3 mx-sm-2"
