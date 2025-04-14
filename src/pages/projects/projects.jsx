@@ -6,6 +6,7 @@ import holdings from "../../assets/images/thrive_holdings.png";
 import insurance from "../../assets/images/thrive_insurance.png";
 import travels from "../../assets/images/thrive_travels.png";
 import seplat_obt from "../../assets/images/seplat_obt.png";
+import farmfresh from "../../assets/images/farmfresh.png";
 import staffadviser from "../../assets/images/staff-adviser.png";
 import aa from "../../assets/images/a&a-empire.png";
 import flexbook from "../../assets/images/flexbook.png";
@@ -161,6 +162,13 @@ const projectsData = [
     description: "Business brochure design",
     link: "#",
     category: "graphics",
+  },
+   {
+    image: farmfresh,
+    title: "Farm Fresh",
+    description: "Online Agro-Ecommerce Website",
+    link: "#",
+    category: "web",
   },
 ];
 const ProjectCard = ({ project }) => {
