@@ -62,6 +62,13 @@ const projectsData = [
     link: "https://staff-adviser.vercel.app/",
     category: "web",
   },
+    {
+    image: farmfresh,
+    title: "Farm Fresh",
+    description: "Online Agro-Ecommerce Website",
+    link: "#",
+    category: "web",
+  },
   {
     image: aa,
     title: "A&A Empire",
@@ -163,13 +170,7 @@ const projectsData = [
     link: "#",
     category: "graphics",
   },
-   {
-    image: farmfresh,
-    title: "Farm Fresh",
-    description: "Online Agro-Ecommerce Website",
-    link: "#",
-    category: "web",
-  },
+ 
 ];
 const ProjectCard = ({ project }) => {
   const [isHovered, setIsHovered] = useState(false);
