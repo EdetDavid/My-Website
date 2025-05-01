@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./projects.css"; // Make sure to create this CSS file
+import "./projects.css"; 
 
-// Import all images
+// Importing  images
 import holdings from "../../assets/images/thrive_holdings.png";
 import insurance from "../../assets/images/thrive_insurance.png";
 import travels from "../../assets/images/thrive_travels.png";
