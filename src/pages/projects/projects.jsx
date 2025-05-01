@@ -12,6 +12,7 @@ import aa from "../../assets/images/a&a-empire.png";
 import flexbook from "../../assets/images/flexbook.png";
 import telemedical from "../../assets/images/telemedical.png";
 import task from "../../assets/images/taskscheduler.png";
+import data from "../../assets/images/data-encryption.png";
 import albinism from "../../assets/images/albinism.png";
 import shield from "../../assets/images/shield.png";
 import cis from "../../assets/images/cis.png";
@@ -88,6 +89,13 @@ const projectsData = [
     title: "Telemedical Hub",
     description: "A webapp for telemedical services",
     link: "https://telemedical-hub.onrender.com",
+    category: "web",
+  },
+    {
+    image: data,
+    title: "Data Encryption System",
+    description: "This is a system used for data & file encryption",
+    link: "https://data-encryption-system.onrender.com/",
     category: "web",
   },
   {
