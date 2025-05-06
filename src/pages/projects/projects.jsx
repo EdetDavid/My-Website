@@ -10,6 +10,7 @@ import farmfresh from "../../assets/images/farmfresh.png";
 import staffadviser from "../../assets/images/staff-adviser.png";
 import aa from "../../assets/images/a&a-empire.png";
 import flexbook from "../../assets/images/flexbook.png";
+import business from "../../assets/images/business-assessment.png";
 import telemedical from "../../assets/images/telemedical.png";
 import task from "../../assets/images/taskscheduler.png";
 import data from "../../assets/images/data-encryption.png";
@@ -68,6 +69,15 @@ const projectsData = [
     title: "Farm Fresh",
     description: "Online Agro-Ecommerce Website",
     link: "https://agro-ecommerce-system.vercel.app/",
+    category: "web",
+  },
+
+  ,
+    {
+    image: business,
+    title: "BizAssess",
+    description: "Online Business Assesment System",
+    link: "https://business-online-assessment-system-frontend.vercel.app/",
     category: "web",
   },
   {
