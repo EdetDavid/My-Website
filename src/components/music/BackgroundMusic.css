@@ -1,0 +1,55 @@
+.controls {
+  position: fixed;
+  bottom: 10px;
+  left: 10px; /* Changed from right to left */
+  z-index: 1000;
+}
+
+.control-button {
+  background-color: #f8f9fa;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 10px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.control-button:hover {
+  background-color: #e2e6ea;
+  transform: scale(1.1);
+}
+
+.control-button i {
+  font-size: 16px;
+  color: #495057;
+}
+
+@media (max-width: 768px) {
+  .control-button {
+    padding: 6px 15px; /* Reduce padding for smaller screens */
+    font-size: 14px; /* Adjust font size */
+    margin: 3px; /* Reduce margin */
+  }
+
+  .control-button i {
+    font-size: 14px; /* Adjust icon size */
+  }
+}
+
+@media (max-width: 480px) {
+  .controls {
+    bottom: 5px; /* Adjust position for very small screens */
+    left: 5px; /* Changed from right to left */
+  }
+
+  .control-button {
+    padding: 7px 15px; /* Further reduce padding */
+    font-size: 16px; /* Further adjust font size */
+    margin: 2px; /* Further reduce margin */
+  }
+
+  .control-button i {
+    font-size: 16px; /* Further adjust icon size */
+  }
+}

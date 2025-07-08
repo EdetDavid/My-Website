@@ -1,0 +1,28 @@
+#App {
+  background-color: #001222;
+  background-image: linear-gradient(to right, #cc2b5e, #753a88);
+  color: #fff;
+  font-family: "Muli", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  height: 100vh;
+  letter-spacing: -0.003em;
+  line-height: 1.58;
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+body {
+  background-color: #001222;
+  color: #fff;
+}
+
+#preloader {
+  background-color: #001222;
+  background-image: url("./assets/preloaders/pink-diamond.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100px;
+  height: 100vh;
+  width: 100%;
+}

@@ -1,0 +1,319 @@
+:root {
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-border: rgba(255, 255, 255, 0.2);
+}
+
+.about {
+  min-height: 100vh;
+  background-image: linear-gradient(
+    to right,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  color: white;
+  padding: 2rem;
+}
+
+.about__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.hero__icon {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  display: inline-block;
+  color: white;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+}
+
+.hero__title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.8));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero__subtitle {
+  font-size: 1.8rem;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.hero__text {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+/* Section Titles */
+.section__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  color: white;
+}
+
+/* Skills Section */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.skill-card {
+  background: var(--card-bg);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.skill-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.skill-card__name {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.skill-card__level {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Interests Section */
+.interests__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  padding: 1rem; 
+}
+
+.interest-card {
+  background: var(--card-bg);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.interest-card svg {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Social Links */
+.social {
+  padding: 3rem 0;
+}
+
+.social__links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.social__links a {
+  color: white;
+  font-size: 2rem;
+  transition: all 0.3s ease;
+}
+
+/* Hover Effects */
+.skill-card:hover,
+.interest-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: white;
+}
+
+.social__links a:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Glass Effect for Sections */
+.hero,
+.skills,
+.interests,
+.social {
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  border: 1px solid var(--card-border);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .about {
+    padding: 1rem;
+  }
+
+  .hero__title {
+    font-size: 2.5rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.5rem;
+  }
+
+  .skills__grid,
+  .interests__grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-card,
+  .interest-card {
+    padding: 1rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  border-radius: 4px;
+}
+
+/* Optional: Add this if you want to prevent text selection */
+.about {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.experience {
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  border: 1px solid var(--card-border);
+}
+
+.experience__timeline {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.experience__item {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.experience__item:hover {
+  transform: translateX(10px);
+  border-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.experience__header {
+  margin-bottom: 1rem;
+}
+
+.experience__header h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.experience__company {
+  display: block;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.3rem;
+}
+
+.experience__date {
+  display: block;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.experience__details {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.experience__details li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.experience__details li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Media Query for mobile devices */
+@media (max-width: 768px) {
+  .experience__item {
+    padding: 1.5rem;
+  }
+
+  .experience__header h3 {
+    font-size: 1.2rem;
+  }
+
+  .experience__company {
+    font-size: 1rem;
+  }
+
+  .experience__details li {
+    font-size: 0.9rem;
+  }
+}
