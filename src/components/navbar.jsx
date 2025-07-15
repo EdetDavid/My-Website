@@ -25,7 +25,7 @@ const Navbar = () => {
       gitLink?.classList.add("text-danger");
     } else {
       body.style.backgroundColor = "none";
-      body.style.backgroundImage = "";
+      body.style.backgroundImage = "linear-gradient(to right, #cc2b5e, #753a88);";
       body.style.transition = "0.6s all ease";
       textDark?.classList.remove("text-white");
       contactBtn?.classList.remove("contact-btn-dark");
