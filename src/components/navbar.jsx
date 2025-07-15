@@ -151,7 +151,7 @@ const Navbar = () => {
           {/* Resume Download Button */}
           <button
             onClick={handleDownloadResume}
-            className="btn resume-btn me-2 hide-nav"
+            className="btn resume-btn me-1 hide-nav"
             disabled={isDownloading}
           >
             {isDownloading ? (
