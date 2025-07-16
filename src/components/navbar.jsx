@@ -24,8 +24,8 @@ const Navbar = () => {
       contactBtn?.classList.add("contact-btn-dark");
       gitLink?.classList.add("text-danger");
     } else {
-      body.style.backgroundColor = "none";
-      body.style.backgroundImage = "linear-gradient(to right, #cc2b5e, #753a88);";
+      body.style.backgroundImage = "linear-gradient(to right, #cc2b5e, #753a88)";
+      body.style.backgroundColor = "#001222";
       body.style.transition = "0.6s all ease";
       textDark?.classList.remove("text-white");
       contactBtn?.classList.remove("contact-btn-dark");
@@ -75,7 +75,7 @@ const Navbar = () => {
   return (
     <nav
       id="navbar"
-      className="navbar navbar-expand-sm navbar-light bg-white shadow"
+      className="navbar navbar-expand-sm navbar-light bg-white shadow "
     >
       <NavLink className="navbar-brand mx-3 hide-nav" to="/">
         {darkMode ? (
