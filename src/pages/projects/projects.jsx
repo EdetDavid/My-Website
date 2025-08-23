@@ -55,7 +55,7 @@ const projectsData = [
     image: seplat_obt,
     title: "Seplat OBT",
     description: "Flight Booking App",
-    link: "https://seplat-obt.onrender.com/",
+    link: "https://seplatobt.pythonanywhere.com/",
     category: "corporate",
   },
   {
@@ -106,7 +106,7 @@ const projectsData = [
     image: data,
     title: "Data Encryption System",
     description: "This is a system used for data & file encryption",
-    link: "https://data-encryption-system.onrender.com/",
+    link: "https://edetdavid.pythonanywhere.com/",
     category: "web",
   },
   {
