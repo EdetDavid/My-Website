@@ -112,15 +112,14 @@ const projectsData = [
     category: "web",
   },
 
-      {
-    image: studentmentalhealth,
-    title: "Student Mental Health Prediction System",
-    description: "This is a system used for predicting the mental health ratio of students.",
-    link: "https://mentalhealthmodelchecker.streamlit.app/",
-    category: "web",
-  },
+  {
+  image: studentmentalhealth,
+  title: "Student Mental Health Prediction System",
+  description: "This is a system used for predicting the mental health ratio of students.",
+  link: "https://mentalhealthmodelchecker.streamlit.app/",
+  category: "web",
+ },
 
-  Student Mental Health Prediction System
   {
     image: albinism,
     title: "Albinism AI",
