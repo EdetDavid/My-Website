@@ -21,6 +21,8 @@ import cis from "../../assets/images/cis.png";
 import IOT from "../../assets/images/IOT.png";
 import react_courseform from "../../assets/images/react-courseform.png";
 import courseform from "../../assets/images/courseform.png";
+import studentmentalhealth from "../../assets/images/studentmentalhealth.png";
+
 
 // Graphics Photos
 import logo1 from "../../assets/graphics/Blex.png";
@@ -109,6 +111,16 @@ const projectsData = [
     link: "https://edetdavid.pythonanywhere.com/",
     category: "web",
   },
+
+      {
+    image: studentmentalhealth,
+    title: "Student Mental Health Prediction System",
+    description: "This is a system used for predicting the mental health ratio of students.",
+    link: "https://mentalhealthmodelchecker.streamlit.app/",
+    category: "web",
+  },
+
+  Student Mental Health Prediction System
   {
     image: albinism,
     title: "Albinism AI",
