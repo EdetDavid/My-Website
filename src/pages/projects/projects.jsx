@@ -22,6 +22,8 @@ import IOT from "../../assets/images/IOT.png";
 import react_courseform from "../../assets/images/react-courseform.png";
 import courseform from "../../assets/images/courseform.png";
 import studentmentalhealth from "../../assets/images/studentmentalhealth.png";
+import drugexpertsystem from "../../assets/images/drugexpertsystem.png";
+
 
 
 // Graphics Photos
@@ -119,6 +121,15 @@ const projectsData = [
   link: "https://mentalhealthmodelchecker.streamlit.app/",
   category: "web",
  },
+
+  {
+image: drugexpertsystem,
+title: "AI Drug Diagnosis System",
+description: "This is a system used for predicting the drugs based on symptoms.",
+link: "https://aidrugsusage-symptoms-system.streamlit.app/",
+category: "web",
+},
+  
 
   {
     image: albinism,
