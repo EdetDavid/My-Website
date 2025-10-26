@@ -6,7 +6,7 @@ import "./projects.css";
 import holdings from "../../assets/images/thrive_holdings.png";
 import insurance from "../../assets/images/thrive_insurance.png";
 import travels from "../../assets/images/thrive_travels.png";
-import seplat_obt from "../../assets/images/seplat_obt.png";
+import obt from "../../assets/images/obt.png";
 import farmfresh from "../../assets/images/farmfresh.png";
 import staffadviser from "../../assets/images/staff-adviser.png";
 import aa from "../../assets/images/a&a-empire.png";
@@ -56,10 +56,10 @@ const projectsData = [
     category: "corporate",
   },
   {
-    image: seplat_obt,
-    title: "Seplat OBT",
-    description: "Flight Booking App",
-    link: "https://seplatobt.pythonanywhere.com/",
+    image: obt,
+    title: "B2B Booking Tool",
+    description: "Travels Booking App",
+    link: "https://https://onlinebookingtool.pythonanywhere.com/",
     category: "corporate",
   },
   {
