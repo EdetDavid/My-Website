@@ -59,7 +59,7 @@ const projectsData = [
     image: obt,
     title: "B2B Booking Tool",
     description: "Travels Booking App",
-    link: "https://https://onlinebookingtool.pythonanywhere.com/",
+    link: "https://onlinebookingtool.pythonanywhere.com/",
     category: "corporate",
   },
   {
