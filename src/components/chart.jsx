@@ -180,7 +180,7 @@ const MyChartComponent = () => {
       transition={{ duration: 0.7, ease: "easeOut" }}
       style={{
         padding: "4rem 0",
-        background: "linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95))",
+        background: "transparent",
       }}
     >
       <div className="container">

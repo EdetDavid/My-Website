@@ -2,6 +2,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/navbar";
 import BackgroundMusic from "./components/music/BackgroundMusic";
+import BackToTop from "./components/BackToTop";
 import Footer from "./components/footer";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Preloader from "./components/Preloader";
@@ -54,6 +55,7 @@ const App = () => {
               <Navbar />
             </Suspense>
             <BackgroundMusic />
+            <BackToTop />
 
             <main id="main-content" tabIndex="-1" role="main">
               <ErrorBoundary>
