@@ -32,8 +32,6 @@ import fragrance from "../../assets/graphics/Fragrance&Style.png";
 // Styles
 import "./projects.css";
 
-
-
 const projectsData = [
   {
     image: holdings,
@@ -72,14 +70,14 @@ const projectsData = [
     link: "https://staff-adviser.vercel.app/",
     category: "web",
   },
-    {
+  {
     image: farmfresh,
     title: "Farm Fresh",
     description: "Online Agro-Ecommerce Website",
     link: "https://agro-ecommerce-system.vercel.app/",
     category: "web",
   },
-    {
+  {
     image: business,
     title: "BizAssess",
     description: "Online Business Assesment System",
@@ -107,7 +105,7 @@ const projectsData = [
     link: "https://telemedical-hub.onrender.com",
     category: "web",
   },
-    {
+  {
     image: data,
     title: "Data Encryption System",
     description: "This is a system used for data & file encryption",
@@ -116,21 +114,22 @@ const projectsData = [
   },
 
   {
-  image: studentmentalhealth,
-  title: "Student Mental Health Prediction System",
-  description: "This is a system used for predicting the mental health ratio of students.",
-  link: "https://mentalhealthmodelchecker.streamlit.app/",
-  category: "web",
- },
+    image: studentmentalhealth,
+    title: "Student Mental Health Prediction System",
+    description:
+      "This is a system used for predicting the mental health ratio of students.",
+    link: "https://mentalhealthmodelchecker.streamlit.app/",
+    category: "web",
+  },
 
   {
-image: drugexpertsystem,
-title: "AI Drug Diagnosis System",
-description: "This is a system used for predicting the drugs based on symptoms.",
-link: "https://aidrugsusage-symptoms-system.streamlit.app/",
-category: "web",
-},
-  
+    image: drugexpertsystem,
+    title: "AI Drug Diagnosis System",
+    description:
+      "This is a system used for predicting the drugs based on symptoms.",
+    link: "https://aidrugsusage-symptoms-system.streamlit.app/",
+    category: "web",
+  },
 
   {
     image: albinism,
@@ -212,7 +211,6 @@ category: "web",
     link: "#",
     category: "graphics",
   },
- 
 ];
 const ProjectCard = ({ project }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -288,7 +286,6 @@ const ProjectCard = ({ project }) => {
   );
 };
 
-
 const Projects = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -297,13 +294,16 @@ const Projects = () => {
 
   // Memoized filtered projects
   const filteredProjects = useMemo(() => {
-    return projectsData.filter(project => {
-      const matchesSearch = 
+    return projectsData.filter((project) => {
+      const matchesSearch =
         project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.tags?.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+        project.tags?.some((tag) =>
+          tag.toLowerCase().includes(searchTerm.toLowerCase())
+        );
 
-      const matchesCategory = selectedCategory === "all" || project.category === selectedCategory;
+      const matchesCategory =
+        selectedCategory === "all" || project.category === selectedCategory;
 
       return matchesSearch && matchesCategory;
     });
@@ -326,21 +326,18 @@ const Projects = () => {
         />
 
         <div className="projects-grid">
-            {filteredProjects.length > 0 ? (
-              filteredProjects.map((project, index) => (
-                <div
-                  key={project.title}
-                  className="project-card"
-                >
-                  <ProjectCard project={project} />
-                </div>
-              ))
-            ) : (
-              <div className="no-results">
-                <h3>No projects found</h3>
-                <p>Try adjusting your search or filter criteria</p>
+          {filteredProjects.length > 0 ? (
+            filteredProjects.map((project, index) => (
+              <div key={project.title} className="project-card">
+                <ProjectCard project={project} />
               </div>
-            )}
+            ))
+          ) : (
+            <div className="no-results">
+              <h3>No projects found</h3>
+              <p>Try adjusting your search or filter criteria</p>
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -1,59 +1,119 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import frosh from "../assets/images/frosh.png";
+import "./showcase.css";
+import TypewriterText from "./TypewriterText";
 
 const Showcase = () => {
+  const [showSecondary, setShowSecondary] = useState(false);
+  const [showTertiary, setShowTertiary] = useState(false);
+
   return (
     <motion.section
-      className="m-3 p-5 container mx-auto justify-content-center align-items-center"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
+      className="hero-section"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.7 }}
     >
-      <div
-        id="showcase"
-        className="d-flex gap-lg-5 offset-lg-1 justify-content-between align-items-center "
-      >
-        {/* <!-- col 1 --> */}
-        <div id="showcase__text" className="col-md-6 justify-content-start">
-          {/* Heading */}
-          <div id="heading_text" className="d-flex my-4">
-            <h2 id="header-text" className="text-dark m-2 my-4">
-              Hi, I'm David
-            </h2>
-          </div>
-          {/* <!-- Heading Details  --> */}
-          <div id="heading_details" className="d-flex my-4">
-            <h1 className="text-light text-wrap">
-              I am a Fullstack Developer with the aim to Rule the Tech
-              Multiverse.
-            </h1>
-          </div>
-          {/* <!-- text quote --> */}
-          <div id="heading_quote" className="d-flex my-4">
-            <h3 className="lead text-light">
-              Multidisciplinary designer who aims at becoming the world 🌍
-              <b> Best </b> Web developer.{" "}
-              <a
-                id="github-link"
-                className="text-info text-decoration-none"
-                href="https://github.com/EdetDavid"
+      <div className="hero-container">
+        <div className="hero-content">
+          <div className="hero-text-container">
+            <motion.div
+              className="greeting-text"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              <h2 className="greeting">
+                <TypewriterText 
+                  text="Hi, I'm David 👋" 
+                  delay={80}
+                  onComplete={() => setShowSecondary(true)}
+                />
+              </h2>
+            </motion.div>
+
+            <motion.div
+              className="role-text"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+            >
+              <h1 className="title">
+                <TypewriterText 
+                  text="Fullstack Developer | Creative Engineer | Tech Enthusiast"
+                  delay={50}
+                  onComplete={() => setShowTertiary(true)}
+                />
+              </h1>
+            </motion.div>
+
+            {showTertiary && (
+              <motion.div
+                className="bio-text"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
               >
-                github.com/EdetDavid
-              </a>
-            </h3>
+                {/* <p className="description">
+                  Crafting innovative digital experiences through code. 
+                  Specialized in building robust web applications with modern technologies.
+                  Passionate about clean code, user experience, and creative problem-solving.
+                </p> */}
+                
+                <div className="cta-container">
+                  <a
+                    href="https://github.com/EdetDavid"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cta-link github"
+                  >
+                    <i className="fab fa-github"></i> View My Work
+                  </a>
+                  <a
+                    href="#contact"
+                    className="cta-link contact"
+                  >
+                    <i className="fas fa-envelope"></i> Get In Touch
+                  </a>
+                </div>
+              </motion.div>
+            )}
           </div>
+
+          <motion.div
+            className="hero-image-container"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+          >
+            <div className="image-wrapper">
+              <img
+                src={frosh}
+                alt="David Edet - Fullstack Developer"
+                className="profile-image"
+              />
+              <div className="image-backdrop"></div>
+            </div>
+          </motion.div>
         </div>
-        {/* <!-- col 2 --> */}
-        <div id="showcase_img-box" className="col-md-4">
-          <img
-            id="showcase__image"
-            className="scale-up-center w-100 img-thumbnail shadow img-fluid rounded-pill d-flex justify-content-center align-items-center"
-            src={frosh}
-            alt="showcase-img"
-          />
-        </div>
+
+        <motion.div
+          className="tech-stack"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 1.5 }}
+        >
+          <p className="tech-stack-text">Tech Stack</p>
+          <div className="tech-icons">
+            <i className="fab fa-react" title="React"></i>
+            <i className="fab fa-node-js" title="Node.js"></i>
+            <i className="fab fa-python" title="Python"></i>
+            <i className="fab fa-js" title="JavaScript"></i>
+            <i className="fab fa-html5" title="HTML5"></i>
+            <i className="fab fa-css3-alt" title="CSS3"></i>
+          </div>
+        </motion.div>
       </div>
     </motion.section>
   );
