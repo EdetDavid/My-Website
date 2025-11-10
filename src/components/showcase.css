@@ -6,11 +6,7 @@
   justify-content: center;
   
   padding: 2rem;
-  background: linear-gradient(135deg, 
-    rgba(2, 6, 23, 0.97) 0%,
-    rgba(9, 9, 35, 0.95) 50%,
-    rgba(2, 6, 23, 0.93) 100%
-  );
+
   position: relative;
   overflow: hidden;
 }

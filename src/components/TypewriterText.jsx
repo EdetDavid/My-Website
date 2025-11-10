@@ -65,6 +65,7 @@ const TypewriterText = ({ text, delay = 90, onComplete }) => {
     isPaused,
     displayedText,
     onComplete,
+    getRandomDelay
   ]);
 
   return (
