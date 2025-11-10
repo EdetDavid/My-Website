@@ -43,11 +43,16 @@ const App = () => {
   return (
     <DarkModeProvider>
       <div className="App" id="App">
-        {isLoading ? (
-          <Preloader />
-        ) : (
+        {/* Show preloader without navbar during initial load */}
+        {isLoading && <Preloader />}
+        
+        {/* Only render the main content when not in initial loading */}
+        {!isLoading && (
           <>
-            <Navbar />
+            {/* Hide navbar during route transitions */}
+            <Suspense fallback={null}>
+              <Navbar />
+            </Suspense>
             <BackgroundMusic />
 
             <main id="main-content" tabIndex="-1" role="main">

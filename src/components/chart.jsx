@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, useAnimationControls } from "framer-motion";
+import { motion } from "framer-motion";
 
 const SkillRing = ({ skill, index }) => {
   const [isHovered, setIsHovered] = useState(false);

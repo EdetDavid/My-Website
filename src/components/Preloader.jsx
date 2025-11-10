@@ -9,12 +9,12 @@ const Preloader = () => {
         top: 0,
         left: 0,
         width: '100%',
-        height: '100%',
+        height: '100vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         background: 'rgba(15, 23, 42, 0.98)',
-        zIndex: 9999,
+        zIndex: 10000,
       }}
     >
       <img 
