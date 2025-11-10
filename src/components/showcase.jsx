@@ -1,92 +1,76 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import frosh from "../assets/images/frosh.png";
 import "./showcase.css";
 import TypewriterText from "./TypewriterText";
 
 const Showcase = () => {
-  const [showSecondary, setShowSecondary] = useState(false);
-  const [showTertiary, setShowTertiary] = useState(false);
-
+  const [showContent, setShowContent] = useState(false);
+  const [showDescription, setShowDescription] = useState(false);
   return (
-    <motion.section
-      className="hero-section"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.7 }}
-    >
+    <section className="hero-section">
       <div className="hero-container">
         <div className="hero-content">
           <div className="hero-text-container">
-            <motion.div
-              className="greeting-text"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              <h2 className="greeting">
+            <div className="text-content-wrapper">
+              <h3 className="greeting">
                 <TypewriterText 
-                  text="Hi, I'm David 👋" 
-                  delay={80}
-                  onComplete={() => setShowSecondary(true)}
-                />
-              </h2>
-            </motion.div>
-
-            <motion.div
-              className="role-text"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <h1 className="title">
-                <TypewriterText 
-                  text="Fullstack Developer | Creative Engineer | Tech Enthusiast"
+                  text="Hi there! I'm David 👋"
                   delay={50}
-                  onComplete={() => setShowTertiary(true)}
+                  onComplete={() => setShowContent(true)}
                 />
-              </h1>
-            </motion.div>
-
-            {showTertiary && (
-              <motion.div
-                className="bio-text"
+              </h3>
+              <motion.h1 
+                className="title"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: showContent ? 1 : 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <TypewriterText 
+                  text="Full Stack Developer & Tech Enthusiast"
+                  delay={40}
+                  onComplete={() => setShowDescription(true)}
+                />
+              </motion.h1>
+              <motion.p
+                className="description"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: showDescription ? 1 : 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <TypewriterText 
+                  text="Passionate about creating elegant, user-friendly web applications with clean code and modern technologies."
+                  delay={30}
+                />
+              </motion.p>
+            </div>
+            {showDescription && (
+              <motion.div 
+                className="cta-container"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
               >
-                {/* <p className="description">
-                  Crafting innovative digital experiences through code. 
-                  Specialized in building robust web applications with modern technologies.
-                  Passionate about clean code, user experience, and creative problem-solving.
-                </p> */}
-                
-                <div className="cta-container">
-                  <a
-                    href="https://github.com/EdetDavid"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cta-link github"
-                  >
-                    <i className="fab fa-github"></i> View My Work
-                  </a>
-                  <a
-                    href="#contact"
-                    className="cta-link contact"
-                  >
-                    <i className="fas fa-envelope"></i> Get In Touch
-                  </a>
-                </div>
+                <a 
+                  href="https://github.com/EdetDavid" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="cta-link github"
+                >
+                  <i className="fab fa-github"></i>
+                  View Projects
+                </a>
+                <a 
+                  href="#contact" 
+                  className="cta-link contact"
+                >
+                  <i className="fas fa-envelope"></i>
+                  Contact Me
+                </a>
               </motion.div>
             )}
           </div>
-
-          <motion.div
-            className="hero-image-container"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-          >
+          <div className="hero-image-container">
             <div className="image-wrapper">
               <img
                 src={frosh}
@@ -95,27 +79,19 @@ const Showcase = () => {
               />
               <div className="image-backdrop"></div>
             </div>
-          </motion.div>
+          </div>
         </div>
-
-        <motion.div
-          className="tech-stack"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.5 }}
-        >
-          <p className="tech-stack-text">Tech Stack</p>
+        <div className="tech-stack">
+          <p className="tech-stack-text">Technologies I work with:</p>
           <div className="tech-icons">
             <i className="fab fa-react" title="React"></i>
             <i className="fab fa-node-js" title="Node.js"></i>
             <i className="fab fa-python" title="Python"></i>
             <i className="fab fa-js" title="JavaScript"></i>
-            <i className="fab fa-html5" title="HTML5"></i>
-            <i className="fab fa-css3-alt" title="CSS3"></i>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 
