@@ -14,21 +14,32 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .about__container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 2rem 0;
 }
 
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 4rem 0;
+  padding: 4rem 1rem;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero__icon {
@@ -57,6 +68,9 @@
 .hero__text {
   font-size: 1.2rem;
   opacity: 0.8;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 /* Section Titles */
@@ -75,6 +89,8 @@
   padding: 1rem;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
+  justify-content: center;
 }
 
 .skill-card {
@@ -305,14 +321,73 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Media Query for mobile devices */
+/* Media Queries for Responsive Design */
 @media (max-width: 768px) {
-
-  .about__container{
-    padding-top: 60px;
+  .about {
+    padding: 1rem;
+    width: 100%;
   }
+
+  .about__container {
+    padding: 60px 1rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero {
+    padding: 2rem 0;
+  }
+
+  .hero__title {
+    font-size: 2.5rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.4rem;
+  }
+
+  .hero__text {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .section__title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .skills__grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+    max-width: calc(100vw - 2rem);
+    margin: 0 auto;
+  }
+
+  .skill-card {
+    padding: 1.5rem;
+  }
+
+  .skill-card__icon {
+    font-size: 2rem;
+  }
+
+  .skill-card__name {
+    font-size: 1rem;
+  }
+
+  .interests__grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+
   .experience__item {
     padding: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .experience__header h3 {
@@ -325,5 +400,73 @@
 
   .experience__details li {
     font-size: 0.9rem;
+  }
+
+  .social__links {
+    gap: 1.5rem;
+  }
+
+  .social__links a {
+    font-size: 1.5rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .about {
+    padding: 0.5rem;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  .about > * {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.2rem;
+  }
+
+  .skills__grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .skill-card {
+    padding: 1rem;
+  }
+
+  .skill-card__icon {
+    font-size: 1.8rem;
+  }
+
+  .interests__grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
+
+/* Landscape orientation */
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero {
+    padding: 1rem 0;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.2rem;
+  }
+
+  .skills__grid,
+  .interests__grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
 }
