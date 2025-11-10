@@ -1,69 +1,87 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import { motion } from "framer-motion";
 
 const MyChartComponent = () => {
+  const canvasRef = useRef(null);
+
   useEffect(() => {
-    const myChart = document.getElementById("barchart");
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    Chart.defaults.color = "#ffffff";
+    const ctx = canvas.getContext("2d");
 
-    const chart = new Chart(myChart, {
+    // Create a modern gradient for the bars
+    const height = 360;
+    const gradient = ctx.createLinearGradient(0, 0, 0, height);
+    gradient.addColorStop(0, "#60a5fa"); // sky blue
+    gradient.addColorStop(0.6, "#7c3aed"); // violet
+    gradient.addColorStop(1, "#3b82f6"); // deep blue
+
+    Chart.defaults.color = "#cbd5e1"; // light text color
+
+    const labels = [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "React",
+      "React Native",
+      "Python",
+      "Django",
+      "PostgreSQL",
+      "WordPress",
+    ];
+
+    const dataValues = [5, 5, 4, 5, 4, 4, 5, 4, 4];
+
+    const chart = new Chart(ctx, {
       type: "bar",
       data: {
-        labels: [
-          "Html5",
-          "CSS3",
-          "Javascript",
-          "React Js",
-          'React Native',
-          "Python",
-          "Django",
-          "PostgreSQL",
-          "Wordpress",
-        ],
+        labels,
         datasets: [
           {
-            label: " My Skills ",
-            data: [5, 5, 4, 5, 4, 4, 5, 4, 4],
-            backgroundColor: [
-              "rgba(255, 99, 132, 0.2)",
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 206, 86, 0.2)",
-              "rgba(75, 192, 192, 0.2)",
-              "rgba(153, 102, 255, 0.2)",
-              "rgba(255, 206, 86, 0.2)",
-              "rgba(255, 159, 64, 0.2)",
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 192, 86, 0.2)",
-            ],
-            borderColor: [
-              "rgba(255, 99, 132, 1)",
-              "rgba(54, 162, 235, 1)",
-              "rgba(255, 206, 86, 1)",
-              "rgba(75, 192, 192, 1)",
-              "rgba(153, 102, 255, 1)",
-              "rgba(255, 159, 64, 1)",
-              "rgba(54, 162, 235, 1)",
-            ],
-            borderWidth: 1,
+            label: "Skill level",
+            data: dataValues,
+            backgroundColor: gradient,
+            borderRadius: 12,
+            borderSkipped: false,
+            barThickness: 22,
+            maxBarThickness: 28,
           },
         ],
       },
       options: {
-        scales: {
-          y: {
-            beginAtZero: true,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: "rgba(2,6,23,0.95)",
+            titleColor: "#fff",
+            bodyColor: "#cbd5e1",
+            padding: 10,
+            displayColors: false,
           },
         },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: { color: "#cbd5e1" },
+          },
+          y: {
+            beginAtZero: true,
+            max: 5,
+            ticks: { stepSize: 1, color: "#cbd5e1" },
+            grid: { color: "rgba(203,213,225,0.06)" },
+          },
+        },
+        animation: { duration: 900, easing: "easeOutQuart" },
       },
     });
 
-    return () => {
-      // Cleanup to avoid memory leaks
-      chart.destroy();
-    };
-  }, []); // Empty dependency array ensures useEffect runs only once
+    // Cleanup
+    return () => chart.destroy();
+  }, []);
 
   return (
     <motion.section
@@ -76,9 +94,9 @@ const MyChartComponent = () => {
       <div className="container">
         <div
           className="chart bg-dark"
-          style={{ width: "700px", margin: "0 auto" }}
+          style={{ width: "100%", maxWidth: 820, height: 360, margin: "0 auto" }}
         >
-          <canvas id="barchart"></canvas>
+          <canvas ref={canvasRef} />
         </div>
       </div>
     </motion.section>
