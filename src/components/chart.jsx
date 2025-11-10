@@ -1,102 +1,204 @@
-import React, { useEffect, useRef } from "react";
-import Chart from "chart.js/auto";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, useAnimationControls } from "framer-motion";
 
-const MyChartComponent = () => {
-  const canvasRef = useRef(null);
+const SkillRing = ({ skill, index }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const radius = 80;
+  const strokeWidth = 12;
+  const normalizedSize = 180;
+  const center = normalizedSize / 2;
+  const circumference = 2 * Math.PI * radius;
+  const progressOffset = circumference - (skill.level / 5) * circumference;
+  const rotationOffset = -90;
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-
-    // Create a modern gradient for the bars
-    const height = 360;
-    const gradient = ctx.createLinearGradient(0, 0, 0, height);
-    gradient.addColorStop(0, "#60a5fa"); // sky blue
-    gradient.addColorStop(0.6, "#7c3aed"); // violet
-    gradient.addColorStop(1, "#3b82f6"); // deep blue
-
-    Chart.defaults.color = "#cbd5e1"; // light text color
-
-    const labels = [
-      "HTML5",
-      "CSS3",
-      "JavaScript",
-      "React",
-      "React Native",
-      "Python",
-      "Django",
-      "PostgreSQL",
-      "WordPress",
-    ];
-
-    const dataValues = [5, 5, 4, 5, 4, 4, 5, 4, 4];
-
-    const chart = new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels,
-        datasets: [
-          {
-            label: "Skill level",
-            data: dataValues,
-            backgroundColor: gradient,
-            borderRadius: 12,
-            borderSkipped: false,
-            barThickness: 22,
-            maxBarThickness: 28,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: "rgba(2,6,23,0.95)",
-            titleColor: "#fff",
-            bodyColor: "#cbd5e1",
-            padding: 10,
-            displayColors: false,
-          },
-        },
-        scales: {
-          x: {
-            grid: { display: false },
-            ticks: { color: "#cbd5e1" },
-          },
-          y: {
-            beginAtZero: true,
-            max: 5,
-            ticks: { stepSize: 1, color: "#cbd5e1" },
-            grid: { color: "rgba(203,213,225,0.06)" },
-          },
-        },
-        animation: { duration: 900, easing: "easeOutQuart" },
-      },
-    });
-
-    // Cleanup
-    return () => chart.destroy();
-  }, []);
+  const colors = {
+    Frontend: {
+      primary: "#3b82f6",
+      glow: "rgba(59, 130, 246, 0.5)"
+    },
+    Backend: {
+      primary: "#8b5cf6",
+      glow: "rgba(139, 92, 246, 0.5)"
+    },
+    Database: {
+      primary: "#06b6d4",
+      glow: "rgba(6, 182, 212, 0.5)"
+    },
+    Mobile: {
+      primary: "#ec4899",
+      glow: "rgba(236, 72, 153, 0.5)"
+    }
+  };
 
   return (
+    <motion.div
+      className="skill-ring"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        width: "180px",
+        height: "180px",
+        position: "relative",
+        margin: "1rem",
+        filter: `drop-shadow(0 0 ${isHovered ? '20px' : '10px'} ${colors[skill.category].glow})`,
+        transition: 'filter 0.3s ease',
+      }}
+    >
+      <svg
+        width={normalizedSize}
+        height={normalizedSize}
+        viewBox={`0 0 ${normalizedSize} ${normalizedSize}`}
+        style={{ filter: isHovered ? 'url(#water)' : 'none' }}
+      >
+        <defs>
+          <filter id="water" x="-50%" y="-50%" width="200%" height="200%">
+            <feTurbulence 
+              type="fractalNoise"
+              baseFrequency="0.01 0.05"
+              numOctaves="3" 
+              seed="1"
+              result="noise"
+            >
+              <animate
+                attributeName="baseFrequency"
+                dur="10s"
+                values="0.01 0.05;0.02 0.06;0.01 0.05"
+                repeatCount="indefinite"
+              />
+            </feTurbulence>
+            <feDisplacementMap 
+              in="SourceGraphic"
+              in2="noise"
+              scale="5"
+              xChannelSelector="R"
+              yChannelSelector="G"
+            />
+          </filter>
+          
+          <linearGradient id={`gradient-${skill.name}`} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor={colors[skill.category].primary} stopOpacity="0.9" />
+            <stop offset="50%" stopColor={colors[skill.category].primary} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={colors[skill.category].primary} stopOpacity="0.8" />
+            <animate
+              attributeName="y1"
+              values="0%;100%;0%"
+              dur="3s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="y2"
+              values="100%;0%;100%"
+              dur="3s"
+              repeatCount="indefinite"
+            />
+          </linearGradient>
+        </defs>
+
+        {/* Background circle */}
+        <circle
+          cx={center}
+          cy={center}
+          r={radius}
+          fill="none"
+          stroke="rgba(203, 213, 225, 0.1)"
+          strokeWidth={strokeWidth}
+        />
+        
+        {/* Progress circle with liquid effect */}
+        <motion.circle
+          cx={center}
+          cy={center}
+          r={radius}
+          fill="none"
+          stroke={`url(#gradient-${skill.name})`}
+          strokeWidth={strokeWidth}
+          strokeDasharray={circumference}
+          strokeDashoffset={circumference}
+          strokeLinecap="round"
+          transform={`rotate(${rotationOffset} ${center} ${center})`}
+          initial={{ strokeDashoffset: circumference }}
+          animate={{ 
+            strokeDashoffset: progressOffset,
+            rotate: isHovered ? [0, 360] : 0
+          }}
+          transition={{ 
+            strokeDashoffset: { duration: 1.5, ease: "easeInOut", delay: index * 0.2 },
+            rotate: { duration: 20, ease: "linear", repeat: Infinity }
+          }}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            values={`${progressOffset};${progressOffset - 10};${progressOffset}`}
+            dur="3s"
+            repeatCount="indefinite"
+          />
+        </motion.circle>
+      </svg>
+      
+      {/* Skill info */}
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          textAlign: "center",
+          color: "#fff",
+        }}
+      >
+        <div style={{ fontSize: "1rem", fontWeight: "600", marginBottom: "0.25rem" }}>
+          {skill.name}
+        </div>
+        <div style={{ fontSize: "0.9rem", color: "#94a3b8" }}>
+          {(skill.level / 5 * 100).toFixed(0)}%
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const MyChartComponent = () => {
+  const skills = [
+    { name: "React", level: 5, category: "Frontend" },
+    { name: "JavaScript", level: 4, category: "Frontend" },
+    { name: "Node.js", level: 4, category: "Backend" },
+    { name: "Python", level: 4, category: "Backend" },
+    { name: "PostgreSQL", level: 4, category: "Database" },
+    { name: "React Native", level: 4, category: "Mobile" },
+  ];
+
+    // Cleanup
+  return (
     <motion.section
-      className="d-flex justify-content-center align-items-center my-5"
+      className="skills-section"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, ease: "easeOut" }}
+      style={{
+        padding: "4rem 0",
+        background: "linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95))",
+      }}
     >
       <div className="container">
         <div
-          className="chart bg-dark"
-          style={{ width: "100%", maxWidth: 820, height: 360, margin: "0 auto" }}
+          className="skills-grid"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "1rem",
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
         >
-          <canvas ref={canvasRef} />
+          {skills.map((skill, index) => (
+            <SkillRing key={skill.name} skill={skill} index={index} />
+          ))}
         </div>
       </div>
     </motion.section>
