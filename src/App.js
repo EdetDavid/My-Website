@@ -1,59 +1,55 @@
-import React, { useState, useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/navbar";
+import BackgroundMusic from "./components/music/BackgroundMusic";
+import Footer from "./components/footer";
+import ErrorBoundary from "./components/ErrorBoundary";
+import { DarkModeProvider } from "./context/DarkModeContext";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+// CSS imports
 import "./App.css";
 import "./assets/css/about.css";
 import "./assets/css/style.css";
-import { Route, Routes } from "react-router-dom";
-import Home from "./pages/home/home";
-import About from "./pages/about/About";
-import Projects from "./pages/projects/projects";
-import musicFile from "./assets/music/mozart.mp3";
-import BackgroundMusic from "./components/music/BackgroundMusic";
-import NotFound from "./pages/notfound/NotFound";
-import AOS from "aos";
-import Footer from "./components/footer";
-import "aos/dist/aos.css";
-import { DarkModeProvider } from './context/DarkModeContext';
+
+// Lazy load page components
+const Home = React.lazy(() => import("./pages/home/home"));
+const About = React.lazy(() => import("./pages/about/About"));
+const Projects = React.lazy(() => import("./pages/projects/projects"));
+const NotFound = React.lazy(() => import("./pages/notfound/NotFound"));
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
-  const [showNavbar, setShowNavbar] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     AOS.init({
-      duration: 1000,
-      easing: "ease-in",
-      once: false,
+      duration: 800,
+      once: true,
+      easing: "ease-out",
     });
-  }, []);
-  useEffect(() => {
-    const preloader = document.getElementById("preloader");
-
-    setTimeout(() => {
-      preloader.style.display = "none";
-      setLoading(false);
-      setShowNavbar(true);
-    }, 2000);
   }, []);
 
   return (
     <DarkModeProvider>
-      {showNavbar && <Navbar />}
-      <div id="App">
-        {loading ? (
-          <div id="preloader"></div>
-        ) : (
-          <>
-            <BackgroundMusic src={musicFile} />
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/about" element={<About />} />
-              <Route exact path="/projects" element={<Projects />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            <Footer />
-          </>
-        )}
+      <div className="App" id="App">
+        <Navbar />
+        <BackgroundMusic />
+
+        <main id="main-content" tabIndex="-1" role="main">
+          <ErrorBoundary>
+            <Suspense fallback={null}>
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </ErrorBoundary>
+        </main>
+
+        <Footer />
       </div>
     </DarkModeProvider>
   );

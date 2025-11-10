@@ -16,31 +16,64 @@ const Navbar = () => {
     const gitLink = document.querySelector("#github-link");
     const contactBtn = document.querySelector("#contact-btn");
 
-    if (darkMode) {
-      body.style.backgroundImage = "none";
-      body.style.backgroundColor = "#001222";
-      body.style.transition = "0.6s all ease";
-      textDark?.classList.add("text-white");
-      contactBtn?.classList.add("contact-btn-dark");
-      gitLink?.classList.add("text-danger");
-    } else {
-      body.style.backgroundImage = "linear-gradient(to right, #cc2b5e, #753a88)";
-      body.style.backgroundColor = "#001222";
-      body.style.transition = "0.6s all ease";
-      textDark?.classList.remove("text-white");
-      contactBtn?.classList.remove("contact-btn-dark");
-      gitLink?.classList.remove("text-danger");
+    // Only proceed if body element exists
+    if (body) {
+      if (darkMode) {
+        body.style.backgroundImage = "none";
+        body.style.backgroundColor = "#001222";
+        body.style.transition = "0.6s all ease";
+      } else {
+        body.style.backgroundImage = "linear-gradient(to right, #cc2b5e, #753a88)";
+        body.style.backgroundColor = "#001222";
+        body.style.transition = "0.6s all ease";
+      }
     }
 
+    // Update classes only if elements exist
+    if (textDark) {
+      if (darkMode) {
+        textDark.classList.add("text-white");
+      } else {
+        textDark.classList.remove("text-white");
+      }
+    }
+
+    if (contactBtn) {
+      if (darkMode) {
+        contactBtn.classList.add("contact-btn-dark");
+      } else {
+        contactBtn.classList.remove("contact-btn-dark");
+      }
+    }
+
+    if (gitLink) {
+      if (darkMode) {
+        gitLink.classList.add("text-danger");
+      } else {
+        gitLink.classList.remove("text-danger");
+      }
+    }
+
+    // Handle nav links
     const links = document.querySelectorAll(".hide-nav");
+    const navbarCollapse = document.querySelector(".navbar-collapse");
+
+    const handleClick = () => {
+      if (navbarCollapse?.classList.contains("show")) {
+        navbarCollapse.classList.remove("show");
+      }
+    };
+
     links.forEach((link) => {
-      link.addEventListener("click", () => {
-        const navbarCollapse = document.querySelector(".navbar-collapse");
-        if (navbarCollapse.classList.contains("show")) {
-          navbarCollapse.classList.remove("show");
-        }
-      });
+      link.addEventListener("click", handleClick);
     });
+
+    // Cleanup event listeners
+    return () => {
+      links.forEach((link) => {
+        link.removeEventListener("click", handleClick);
+      });
+    };
   }, [darkMode]);
 
   const handleDarkModeToggle = () => {
@@ -75,13 +108,15 @@ const Navbar = () => {
   return (
     <nav
       id="navbar"
-      className="navbar navbar-expand-sm navbar-light bg-white shadow "
+      className="navbar navbar-expand-sm navbar-light bg-white shadow fixed-top"
+      role="navigation"
+      aria-label="Main navigation"
     >
-      <NavLink className="navbar-brand mx-3 hide-nav" to="/">
+      <NavLink className="navbar-brand mx-3 hide-nav" to="/" aria-label="Homepage">
         {darkMode ? (
-          <img src={logoDark} alt="logo" className="logo-dark" />
+          <img src={logoDark} alt="Dvooskid Codes logo" className="logo-dark" />
         ) : (
-          <img src={logoLight} alt="logo" className="logo-light" />
+          <img src={logoLight} alt="Dvooskid Codes logo" className="logo-light" />
         )}
       </NavLink>
 
@@ -119,7 +154,7 @@ const Navbar = () => {
           <li className="nav-item dropdown">
             <NavLink
               className="nav-link dropdown-toggle"
-              to="/home"
+              to="/"
               id="dropdownId"
               data-bs-toggle="dropdown"
               aria-haspopup="true"
@@ -153,6 +188,7 @@ const Navbar = () => {
             onClick={handleDownloadResume}
             className="btn resume-btn me-1 hide-nav"
             disabled={isDownloading}
+            aria-label="Download resume"
           >
             {isDownloading ? (
               <span>
@@ -177,6 +213,8 @@ const Navbar = () => {
               onMouseEnter={() => setShowToggleText(true)}
               onMouseLeave={() => setShowToggleText(false)}
               style={{ position: "relative" }}
+              aria-pressed={darkMode}
+              aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
             >
               <i
                 className={
@@ -193,15 +231,21 @@ const Navbar = () => {
           </div>
 
           {/* Contact Button */}
-          <a href="#contact">
-            <button
-              type="button"
-              id="contact-btn"
-              className="btn btn-outline-dark hide-nav my-sm-0"
-            >
-              Contact
-            </button>
-          </a>
+          <button
+            type="button"
+            id="contact-btn"
+            className="btn btn-outline-dark hide-nav my-sm-0"
+            onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+                contactSection.focus();
+              }
+            }}
+            aria-label="Scroll to contact section"
+          >
+            Contact
+          </button>
         </div>
       </div>
     </nav>

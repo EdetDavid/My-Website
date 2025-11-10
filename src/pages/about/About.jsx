@@ -27,7 +27,7 @@ import "./About.css";
 import { useDarkMode } from "../../context/DarkModeContext";
 
 const About = () => {
-  const { darkMode, setDarkMode } = useDarkMode();
+  const { darkMode } = useDarkMode();
   // Animation variants
   const pageVariants = {
     initial: { opacity: 0, y: 20 },

@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import "./projects.css"; 
+import React, { useState, useMemo } from "react";
+import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 
-// Importing  images
+// Project images
 import holdings from "../../assets/images/thrive_holdings.png";
 import insurance from "../../assets/images/thrive_insurance.png";
 import travels from "../../assets/images/thrive_travels.png";
@@ -24,14 +23,16 @@ import courseform from "../../assets/images/courseform.png";
 import studentmentalhealth from "../../assets/images/studentmentalhealth.png";
 import drugexpertsystem from "../../assets/images/drugexpertsystem.png";
 
-
-
 // Graphics Photos
 import logo1 from "../../assets/graphics/Blex.png";
 import flyer1 from "../../assets/graphics/kagali.png";
-import brochure1 from "../../assets/graphics/elite.png";
 import flourish from "../../assets/graphics/Florish.png";
 import fragrance from "../../assets/graphics/Fragrance&Style.png";
+
+// Styles
+import "./projects.css";
+
+
 
 const projectsData = [
   {
@@ -40,6 +41,7 @@ const projectsData = [
     description: "Thrive group website.",
     link: "https://www.thrivenig.com/",
     category: "corporate",
+    tags: ["React", "Corporate", "Website"],
   },
   {
     image: insurance,
@@ -47,6 +49,7 @@ const projectsData = [
     description: "Thrive insurance website.",
     link: "https://www.insurance.thrivenig.com/",
     category: "corporate",
+    tags: ["React", "Corporate", "Insurance"],
   },
   {
     image: travels,
@@ -76,8 +79,6 @@ const projectsData = [
     link: "https://agro-ecommerce-system.vercel.app/",
     category: "web",
   },
-
-  ,
     {
     image: business,
     title: "BizAssess",
@@ -225,16 +226,18 @@ const ProjectCard = ({ project }) => {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="project-image">
-          <img
-            src={project.image}
-            alt={project.title}
-            onClick={() =>
-              project.category === "graphics" && setShowLightbox(true)
-            }
-            style={{
-              cursor: project.category === "graphics" ? "zoom-in" : "pointer",
-            }}
-          />
+          {project.image && (
+            <img
+              src={project.image}
+              alt={project.title}
+              onClick={() =>
+                project.category === "graphics" && setShowLightbox(true)
+              }
+              style={{
+                cursor: project.category === "graphics" ? "zoom-in" : "pointer",
+              }}
+            />
+          )}
           <div className="project-overlay">
             <div className="project-details">
               <h3>{project.title}</h3>
@@ -246,6 +249,7 @@ const ProjectCard = ({ project }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="visit-btn"
+                    aria-label={`Visit ${project.title}`}
                   >
                     <span>Visit Site</span>
                     <i className="fas fa-external-link-alt"></i>
@@ -255,6 +259,7 @@ const ProjectCard = ({ project }) => {
                 <button
                   className="visit-btn"
                   onClick={() => setShowLightbox(true)}
+                  aria-label={`View ${project.title} full size`}
                 >
                   <span>View Full Size</span>
                   <i className="fas fa-search-plus"></i>
@@ -265,13 +270,14 @@ const ProjectCard = ({ project }) => {
         </div>
       </div>
 
-      {showLightbox && (
+      {showLightbox && project.image && (
         <div className="lightbox" onClick={() => setShowLightbox(false)}>
           <div className="lightbox-content">
             <img src={project.image} alt={project.title} />
             <button
               className="lightbox-close"
               onClick={() => setShowLightbox(false)}
+              aria-label="Close image"
             >
               ×
             </button>
@@ -288,41 +294,60 @@ const sectionVariants = {
 };
 
 const Projects = () => {
-  const [filter, setFilter] = useState("all");
-  const categories = ["all", "corporate", "web", "graphics"];
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  // Remove 'all' from categories as it's handled separately in ProjectFilter
+  const categories = ["corporate", "web", "graphics"];
 
-  const filteredProjects =
-    filter === "all"
-      ? projectsData
-      : projectsData.filter((project) => project.category === filter);
+  // Memoized filtered projects
+  const filteredProjects = useMemo(() => {
+    return projectsData.filter(project => {
+      const matchesSearch = 
+        project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        project.tags?.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+
+      const matchesCategory = selectedCategory === "all" || project.category === selectedCategory;
+
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchTerm, selectedCategory]);
 
   return (
-    <motion.section className="projects-section" variants={sectionVariants} initial="hidden" animate="visible">
+    <section className="projects-section">
       <div className="projects-container">
-        <motion.div className="section-header" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+        <div className="section-header">
           <h1>My Projects</h1>
           <p>Explore my latest works and creative endeavors</p>
-        </motion.div>
-        <motion.div className="filters" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-          {categories.map((category) => (
-            <button
-              key={category}
-              className={`filter-btn ${filter === category ? "active" : ""}`}
-              onClick={() => setFilter(category)}
-            >
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </button>
-          ))}
-        </motion.div>
-        <motion.div className="projects-grid" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
-          {filteredProjects.map((project, index) => (
-            <motion.div key={index} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + index * 0.08 }}>
-              <ProjectCard project={project} />
-            </motion.div>
-          ))}
-        </motion.div>
+        </div>
+
+        <ProjectFilter
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          categories={categories}
+        />
+
+        <div className="projects-grid">
+            {filteredProjects.length > 0 ? (
+              filteredProjects.map((project, index) => (
+                <div
+                  key={project.title}
+                  className="project-card"
+                >
+                  <ProjectCard project={project} />
+                </div>
+              ))
+            ) : (
+              <div className="no-results">
+                <h3>No projects found</h3>
+                <p>Try adjusting your search or filter criteria</p>
+              </div>
+            )}
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

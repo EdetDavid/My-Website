@@ -1,27 +1,31 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #001222;
+  color: #fff;
+  overflow-x: hidden;
+}
+
 #App {
   background-color: #001222;
   color: #fff;
   font-family: "Muli", sans-serif;
   font-size: 20px;
   font-weight: 400;
-  height: 100vh;
+  min-height: 100vh;
   letter-spacing: -0.003em;
   line-height: 1.58;
-  overflow-x: hidden;
-  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
-body {
-  background-color: #001222;
-  color: #fff;
-}
-
-#preloader {
-  background-color: #001222;
-  background-image: url("./assets/preloaders/pink-diamond.gif");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100px;
-  height: 100vh;
+main {
+  flex: 1 0 auto;
+  min-height: calc(100vh - 76px); /* Subtract navbar height */
+  padding-top: 76px; /* Add padding for fixed navbar */
   width: 100%;
 }
+
+

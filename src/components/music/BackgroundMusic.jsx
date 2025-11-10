@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
 import './BackgroundMusic.css'; // Create a CSS file for additional styling
 
-const BackgroundMusic = ({ src }) => {
+const BackgroundMusic = ({ src = '/path/to/default/music.mp3' }) => {
   const audioRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false); // Start with music paused by default
 
   const togglePlay = () => {
     if (audioRef.current.paused) {
@@ -23,7 +23,8 @@ const BackgroundMusic = ({ src }) => {
 
   return (
     <div>
-      <audio ref={audioRef} src={src} autoPlay loop />
+      <audio ref={audioRef} src={src} loop />
+      {/* Audio element with preload="none" and no autoPlay for better user experience */}
       <div id="controls" className="controls">
         <button onClick={togglePlay} className="control-button">
           {isPlaying ? <i className="fas fa-pause"></i> : <i className="fas fa-play"></i>}

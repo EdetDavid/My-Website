@@ -8,6 +8,19 @@
   -webkit-user-select: none;
   user-select: none;
 }
+
+/* Add padding to body for fixed navbar */
+body {
+  padding-top: 76px; /* Adjust this value based on your navbar height */
+}
+
+/* Ensure navbar stays on top */
+#navbar {
+  z-index: 1030;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
 /* .nav-link:hover {
   color: #cc2b5e;
 } */
@@ -31,6 +44,49 @@ footer p:hover {
 
 #github-link {
   transition: 0.6s ease;
+}
+
+/* Typing animation for individual letters */
+.typing-letter {
+  display: inline-block;
+  opacity: 0;
+  animation: typingLetter 0.1s ease forwards;
+}
+
+@keyframes typingLetter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add the blinking cursor animation to the typing text */
+.typing-text::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: #60a5fa;
+  animation: blink 0.7s infinite;
 }
 
 #contact-btn:hover {

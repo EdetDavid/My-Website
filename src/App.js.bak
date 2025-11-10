@@ -1,0 +1,190 @@
+import React, { useState, useEffect, Suspense } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import Navbar from "./components/navbar";
+import BackgroundMusic from "./components/music/BackgroundMusic";
+import Footer from "./components/footer";
+import { DarkModeProvider } from './context/DarkModeContext';
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+// Import our new components
+import PageTransition from "./components/common/PageTransition";
+import ProgressBar from "./components/common/ProgressBar";
+import { ProjectsGridSkeleton, ProfileSkeleton } from "./components/common/Loading";
+
+// CSS imports
+import "./App.css";
+import "./assets/css/about.css";
+import "./assets/css/style.css";
+
+// Lazy load page components
+const Home = React.lazy(() => import("./pages/home/home"));
+const About = React.lazy(() => import("./pages/about/About"));
+const Projects = React.lazy(() => import("./pages/projects/projects"));
+const NotFound = React.lazy(() => import("./pages/notfound/NotFound"));
+
+// CSS imports
+import "./App.css";
+import "./assets/css/about.css";
+import "./assets/css/style.css";
+
+// Lazy load page components
+const Home = React.lazy(() => import("./pages/home/home"));
+const About = React.lazy(() => import("./pages/about/About"));
+const Projects = React.lazy(() => import("./pages/projects/projects"));
+const NotFound = React.lazy(() => import("./pages/notfound/NotFound"));
+
+const App = () => {
+  const [loading, setLoading] = useState(true);
+  const [showNavbar, setShowNavbar] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-out'
+    });
+
+    const timer = setTimeout(() => {
+      setLoading(false);
+      setShowNavbar(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="loading-screen">
+        <ProgressBar />
+      </div>
+    );
+  }
+
+  return (
+    <DarkModeProvider>
+      <div className="App">
+        {showNavbar && <Navbar />}
+        <BackgroundMusic />
+        
+        <AnimatePresence mode="wait">
+          <PageTransition>
+            <Suspense fallback={<ProgressBar />}>
+              <Routes location={location} key={location.pathname}>
+                <Route 
+                  path="/" 
+                  element={
+                    <Suspense fallback={<ProjectsGridSkeleton />}>
+                      <Home />
+                    </Suspense>
+                  } 
+                />
+                <Route 
+                  path="/about" 
+                  element={
+                    <Suspense fallback={<ProfileSkeleton />}>
+                      <About />
+                    </Suspense>
+                  } 
+                />
+                <Route 
+                  path="/projects" 
+                  element={
+                    <Suspense fallback={<ProjectsGridSkeleton />}>
+                      <Projects />
+                    </Suspense>
+                  } 
+                />
+                <Route 
+                  path="*" 
+                  element={
+                    <Suspense fallback={<ProgressBar />}>
+                      <NotFound />
+                    </Suspense>
+                  } 
+                />
+              </Routes>
+            </Suspense>
+          </PageTransition>
+        </AnimatePresence>
+        
+        <Footer />
+      </div>
+    </DarkModeProvider>
+  );
+};
+      easing: 'ease-out'
+    });
+
+    const timer = setTimeout(() => {
+      setLoading(false);
+      setShowNavbar(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="loading-screen">
+        <ProgressBar />
+      </div>
+    );
+  }
+
+  return (
+    <DarkModeProvider>
+      <div className="App">
+        {showNavbar && <Navbar />}
+        <BackgroundMusic />
+        
+        <AnimatePresence mode="wait">
+          <PageTransition>
+            <Suspense fallback={<ProgressBar />}>
+              <Routes location={location} key={location.pathname}>
+                <Route 
+                  path="/" 
+                  element={
+                    <Suspense fallback={<ProjectsGridSkeleton />}>
+                      <Home />
+                    </Suspense>
+                  } 
+                />
+                <Route 
+                  path="/about" 
+                  element={
+                    <Suspense fallback={<ProfileSkeleton />}>
+                      <About />
+                    </Suspense>
+                  } 
+                />
+                <Route 
+                  path="/projects" 
+                  element={
+                    <Suspense fallback={<ProjectsGridSkeleton />}>
+                      <Projects />
+                    </Suspense>
+                  } 
+                />
+                <Route 
+                  path="*" 
+                  element={
+                    <Suspense fallback={<ProgressBar />}>
+                      <NotFound />
+                    </Suspense>
+                  } 
+                />
+              </Routes>
+            </Suspense>
+          </PageTransition>
+        </AnimatePresence>
+        
+        <Footer />
+      </div>
+    </DarkModeProvider>
+  );
+};
+
+export default App;
