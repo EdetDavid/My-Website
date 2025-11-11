@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { FaDownload, FaMoon, FaSun } from "react-icons/fa";
 import logoLight from "../assets/images/logo-light.png";
 import logoDark from "../assets/images/logo-dark.png";
+import resume from "../assets/documents/Edet_David_Nsikak.pdf";
 import "./navbar.css";
 
 const Navbar = () => {
@@ -104,7 +105,7 @@ const Navbar = () => {
           <button onClick={handleContactScroll} className="contact-btn">
             Contact
           </button>
-          <a href="/resume.pdf" download className="resume-btn">
+          <a href={resume} download="Edet_David_Nsikak.pdf" className="resume-btn">
             <FaDownload /> <span>Resume</span>
           </a>
           <button className="theme-toggle" onClick={handleDarkModeToggle}>
