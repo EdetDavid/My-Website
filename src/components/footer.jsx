@@ -15,11 +15,49 @@ const Footer = () => {
           className="d-flex justify-content-center align-items-center position-relative"
         >
           <p className="text-muted my-2">&copy; All rights reserved</p>
-          <div className="position-absolute end-0">
-            <a href="#">
-              <i className="fas fa-caret-up text-white fa-2x"></i>
-            </a>
-          </div>
+              <div className="position-absolute end-0">
+                <button
+                  type="button"
+                  className="footer-back-to-top"
+                  aria-label="Scroll to top"
+                  onClick={() => {
+                    // Try a few scroll targets to support apps that use a scroll container
+                    const targets = [
+                      document.getElementById("main-content"),
+                      document.scrollingElement,
+                      document.documentElement,
+                      document.body,
+                    ].filter(Boolean);
+
+                    let didScroll = false;
+
+                    for (const t of targets) {
+                      try {
+                        if (typeof t.scrollTo === "function") {
+                          t.scrollTo({ top: 0, behavior: "smooth" });
+                          didScroll = true;
+                        } else if ("scrollTop" in t) {
+                          t.scrollTop = 0;
+                          didScroll = true;
+                        }
+                      } catch (err) {
+                        // ignore and try next
+                      }
+                    }
+
+                    // Last resort: call window.scrollTo
+                    if (!didScroll) {
+                      try {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      } catch (err) {
+                        document.documentElement.scrollTop = 0;
+                      }
+                    }
+                  }}
+                >
+                  <i className="fas fa-caret-up text-white fa-2x"></i>
+                </button>
+              </div>
         </div>
       </div>
     </motion.footer>
