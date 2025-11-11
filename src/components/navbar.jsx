@@ -70,6 +70,7 @@ const Navbar = () => {
   return (
     <nav
       ref={navbarRef}
+      
       className={`navbar-container ${isNavbarVisible ? "visible" : "hidden"} ${
         darkMode ? "dark-mode" : "light-mode"
       }`}

@@ -539,6 +539,27 @@ footer i:hover {
   transition: all ease 0.5s;
 }
 
+/* Footer back-to-top button styles */
+.footer-back-to-top {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 4px 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-back-to-top:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.footer-back-to-top i {
+  pointer-events: none; /* let button handle clicks */
+}
+
 textarea:focus,
 textarea.form-control:focus,
 input.form-control:focus,

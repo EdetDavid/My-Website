@@ -9,10 +9,15 @@ const BackToTop = () => {
   const { darkMode } = useDarkMode();
 
   useEffect(() => {
+    const THRESHOLD = 150; // show earlier on shorter pages
     const toggleVisibility = () => {
-      // Show button when page is scrolled 300px
-      setIsVisible(window.pageYOffset > 300);
+      // Show button when page is scrolled past threshold
+      const y = window.pageYOffset || document.documentElement.scrollTop;
+      setIsVisible(y > THRESHOLD);
     };
+
+    // initial check in case page loads scrolled
+    toggleVisibility();
 
     window.addEventListener('scroll', toggleVisibility);
 
