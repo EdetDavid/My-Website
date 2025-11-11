@@ -16,7 +16,7 @@ const Footer = () => {
         >
           <p className="text-muted my-2">&copy; All rights reserved</p>
           <div className="position-absolute end-0">
-            <a href="#navbar">
+            <a href="#">
               <i className="fas fa-caret-up text-white fa-2x"></i>
             </a>
           </div>
