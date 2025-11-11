@@ -98,10 +98,16 @@
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid var(--card-border);
-  border-radius: 15px;
-  padding: 2rem;
+  border-radius: 5px;
+  padding: 5px;
   text-align: center;
   transition: all 0.3s ease;
+  /* Make the card fill the grid cell and size reliably */
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .skill-card__icon {
@@ -209,7 +215,7 @@
 
   .skill-card,
   .interest-card {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 }
 
@@ -369,7 +375,7 @@
   }
 
   .skill-card {
-    padding: 1.5rem;
+    padding: 0.5rem;
   }
 
   .skill-card__icon {
