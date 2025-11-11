@@ -9,22 +9,6 @@
   user-select: none;
 }
 
-/* Add padding to body for fixed navbar */
-body {
-  padding-top: 76px; /* Adjust this value based on your navbar height */
-}
-
-/* Ensure navbar stays on top */
-#navbar {
-  z-index: 1030;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.95) !important;
-}
-/* .nav-link:hover {
-  color: #cc2b5e;
-} */
-
 footer p:hover {
   color: #fff !important;
 }
@@ -91,18 +75,6 @@ footer p:hover {
 
 #contact-btn:hover {
   background-color: #cc2b5e;
-  transition: 0.5s ease;
-}
-
-.contact-btn-dark {
-  background-color: #fff !important;
-  outline: #001222;
-  color: #001222;
-  border: #001222;
-}
-
-.contact-btn-dark:hover {
-  background: #001222 !important;
   transition: 0.5s ease;
 }
 
@@ -581,46 +553,11 @@ input[type="number"]:focus,
 [contenteditable].form-control:focus {
   box-shadow: none !important;
 }
-.navbar-toggler,
-.navbar-toggler:focus,
-.navbar-toggler:active,
-.navbar-toggler-icon:focus {
-  outline: none !important;
-  box-shadow: none !important;
-  border: none !important;
-}
-
 .btn:focus {
   box-shadow: none !important;
 }
 
-/* Resume */
-
-.resume-btn {
-  background: linear-gradient(45deg, #2196f3, #21cbf3);
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  font-weight: 500;
-}
-
-.resume-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
-}
-
-.resume-btn:active {
-  transform: translateY(0);
-}
-
-.resume-btn:disabled {
-  background: #cccccc;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
+/* Resume Button - handled in navbar.css */
 
 /* Dark mode compatibility */
 [data-theme="dark"] .resume-btn {
