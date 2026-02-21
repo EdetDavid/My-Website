@@ -44,6 +44,37 @@ const Navbar = () => {
     };
   }, [lastScrollY, scrollTimeout]);
 
+  // Close mobile menu on Escape or when clicking outside the navbar
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === "Escape") {
+        setIsMobileMenuOpen(false);
+        setActiveMenu(null);
+      }
+    };
+
+    const handleClickOutside = (e) => {
+      if (
+        isMobileMenuOpen &&
+        navbarRef.current &&
+        !navbarRef.current.contains(e.target)
+      ) {
+        setIsMobileMenuOpen(false);
+        setActiveMenu(null);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener("keydown", handleKey);
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleKey);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
+
   const handleDarkModeToggle = () => setDarkMode(!darkMode);
 
   const handleContactScroll = () => {

@@ -1,9 +1,32 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const DarkModeContext = createContext(undefined);
 
 export const DarkModeProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(true); // Set default to true for dark mode
+  // Initialize from localStorage if present, otherwise respect OS preference
+  const getInitial = () => {
+    try {
+      const stored = localStorage.getItem('darkMode');
+      if (stored !== null) return stored === 'true';
+    } catch (err) {
+      // ignore localStorage errors
+    }
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return true;
+  };
+
+  const [darkMode, setDarkMode] = useState(getInitial);
+
+  // Persist preference
+  useEffect(() => {
+    try {
+      localStorage.setItem('darkMode', darkMode ? 'true' : 'false');
+    } catch (err) {
+      // ignore
+    }
+  }, [darkMode]);
 
   const value = {
     darkMode,

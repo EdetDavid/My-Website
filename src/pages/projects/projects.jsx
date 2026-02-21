@@ -35,6 +35,7 @@ import flyer1 from "../../assets/graphics/kagali.png";
 import flourish from "../../assets/graphics/Florish.png";
 import fragrance from "../../assets/graphics/Fragrance&Style.png";
 import MobileApps from "../../components/MobileApps";
+import ProjectCard from "../../components/ProjectCard";
 
 // Styles
 import "./projects.css";
@@ -194,6 +195,8 @@ const projectsData = [
     title: "FoodEcom Mobile",
     description: "Food e-commerce mobile app (React Native).",
     link: "#",
+    playStore: "#",
+    appStore: "#",
     category: "mobile",
     tags: ["React Native", "E-commerce"],
   },
@@ -202,6 +205,7 @@ const projectsData = [
     title: "Sophistican Laundry App",
     description: "Laundry service booking mobile app.",
     link: "#",
+    playStore: "#",
     category: "mobile",
     tags: ["React Native", "Services"],
   },
@@ -210,6 +214,8 @@ const projectsData = [
     title: "TrackD",
     description: "Delivery & tracking mobile app.",
     link: "#",
+    playStore: "#",
+    appStore: "#",
     category: "mobile",
     tags: ["React Native", "Logistics"],
   },
@@ -218,6 +224,7 @@ const projectsData = [
     title: "XTranslate",
     description: "Mobile translation utility app.",
     link: "#",
+    appStore: "#",
     category: "mobile",
     tags: ["Flutter", "Utility"],
   },
@@ -253,79 +260,7 @@ const projectsData = [
     category: "graphics",
   },
 ];
-const ProjectCard = ({ project }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [showLightbox, setShowLightbox] = useState(false);
-
-  return (
-    <div className="project-item" data-category={project.category}>
-      <div
-        className={`project-card ${isHovered ? "hovered" : ""}`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <div className="project-image">
-          {project.image && (
-            <img
-              src={project.image}
-              alt={project.title}
-              onClick={() =>
-                project.category === "graphics" && setShowLightbox(true)
-              }
-              style={{
-                cursor: project.category === "graphics" ? "zoom-in" : "pointer",
-              }}
-            />
-          )}
-          <div className="project-overlay">
-            <div className="project-details">
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              {project.category !== "graphics" ? (
-                <div className="project-links">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="visit-btn"
-                    aria-label={`Visit ${project.title}`}
-                  >
-                    <span>Visit Site</span>
-                    <i className="fas fa-external-link-alt"></i>
-                  </a>
-                </div>
-              ) : (
-                <button
-                  className="visit-btn"
-                  onClick={() => setShowLightbox(true)}
-                  aria-label={`View ${project.title} full size`}
-                >
-                  <span>View Full Size</span>
-                  <i className="fas fa-search-plus"></i>
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {showLightbox && project.image && (
-        <div className="lightbox" onClick={() => setShowLightbox(false)}>
-          <div className="lightbox-content">
-            <img src={project.image} alt={project.title} />
-            <button
-              className="lightbox-close"
-              onClick={() => setShowLightbox(false)}
-              aria-label="Close image"
-            >
-              ×
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
+// ProjectCard component moved to src/components/ProjectCard.jsx
 
 const Projects = () => {
   const [searchTerm, setSearchTerm] = useState("");
