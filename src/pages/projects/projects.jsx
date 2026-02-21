@@ -23,11 +23,18 @@ import courseform from "../../assets/images/courseform.png";
 import studentmentalhealth from "../../assets/images/studentmentalhealth.png";
 import drugexpertsystem from "../../assets/images/drugexpertsystem.png";
 
+// Mobile app screenshots
+import mobile_food from "../../assets/images/mobile_apps/food_ecommerce.jpeg";
+import mobile_laundry from "../../assets/images/mobile_apps/Sophistican-laundry.jpeg";
+import mobile_track from "../../assets/images/mobile_apps/trackD.jpeg";
+import mobile_xtranslate from "../../assets/images/mobile_apps/xtranslate.jpeg";
+
 // Graphics Photos
 import logo1 from "../../assets/graphics/Blex.png";
 import flyer1 from "../../assets/graphics/kagali.png";
 import flourish from "../../assets/graphics/Florish.png";
 import fragrance from "../../assets/graphics/Fragrance&Style.png";
+import MobileApps from "../../components/MobileApps";
 
 // Styles
 import "./projects.css";
@@ -181,6 +188,40 @@ const projectsData = [
     category: "web",
   },
 
+  // Mobile Apps
+  {
+    image: mobile_food,
+    title: "FoodEcom Mobile",
+    description: "Food e-commerce mobile app (React Native).",
+    link: "#",
+    category: "mobile",
+    tags: ["React Native", "E-commerce"],
+  },
+  {
+    image: mobile_laundry,
+    title: "Sophistican Laundry App",
+    description: "Laundry service booking mobile app.",
+    link: "#",
+    category: "mobile",
+    tags: ["React Native", "Services"],
+  },
+  {
+    image: mobile_track,
+    title: "TrackD",
+    description: "Delivery & tracking mobile app.",
+    link: "#",
+    category: "mobile",
+    tags: ["React Native", "Logistics"],
+  },
+  {
+    image: mobile_xtranslate,
+    title: "XTranslate",
+    description: "Mobile translation utility app.",
+    link: "#",
+    category: "mobile",
+    tags: ["Flutter", "Utility"],
+  },
+
   // Graphics Section
   {
     image: logo1,
@@ -290,7 +331,13 @@ const Projects = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   // Remove 'all' from categories as it's handled separately in ProjectFilter
-  const categories = ["corporate", "web", "graphics"];
+  const categories = ["corporate", "web", "mobile", "graphics"];
+
+  // Mobile projects (for dedicated section)
+  const mobileProjects = useMemo(
+    () => projectsData.filter((p) => p.category === "mobile"),
+    []
+  );
 
   // Memoized filtered projects
   const filteredProjects = useMemo(() => {
@@ -316,6 +363,9 @@ const Projects = () => {
           <h1>My Projects</h1>
           <p>Explore my latest works and creative endeavors</p>
         </div>
+
+        {/* Dedicated mobile apps section */}
+        {mobileProjects.length > 0 && <MobileApps projects={mobileProjects} />}
 
         <ProjectFilter
           searchTerm={searchTerm}
