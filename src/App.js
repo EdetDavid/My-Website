@@ -9,6 +9,7 @@ import Preloader from "./components/Preloader";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import musicFile from "./assets/music/mozart.mp3";
 
 // CSS imports
 import "./App.css";
@@ -54,7 +55,7 @@ const App = () => {
             <Suspense fallback={null}>
               <Navbar />
             </Suspense>
-            <BackgroundMusic />
+            <BackgroundMusic src={musicFile} />
             <BackToTop />
 
             <main id="main-content" tabIndex="-1" role="main">

@@ -1,36 +1,43 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './BackgroundMusic.css'; // Create a CSS file for additional styling
 
-const BackgroundMusic = ({ src = '/path/to/default/music.mp3' }) => {
+const BackgroundMusic = ({ src }) => {
   const audioRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false); // Start with music paused by default
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    if (audioRef.current && src) {
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch(() => {
+            setIsPlaying(false);
+          });
+      }
+    }
+  }, [src]);
 
   const togglePlay = () => {
-    if (audioRef.current.paused) {
-      audioRef.current.play();
-      setIsPlaying(true);
-    } else {
-      audioRef.current.pause();
-      setIsPlaying(false);
+    if (audioRef.current) {
+      if (audioRef.current.paused) {
+        audioRef.current.play();
+        setIsPlaying(true);
+      } else {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      }
     }
-  };
-
-  const stopMusic = () => {
-    audioRef.current.pause();
-    audioRef.current.currentTime = 0;
-    setIsPlaying(false);
   };
 
   return (
     <div>
       <audio ref={audioRef} src={src} loop />
-      {/* Audio element with preload="none" and no autoPlay for better user experience */}
       <div id="controls" className="controls">
-        <button onClick={togglePlay} className="control-button">
-          {isPlaying ? <i className="fas fa-pause"></i> : <i className="fas fa-play"></i>}
-        </button>
-        <button onClick={stopMusic} className="control-button">
-          <i className="fas fa-stop"></i>
+        <button onClick={togglePlay} className={`control-button ${isPlaying ? 'playing' : ''}`}>
+          <i className="fas fa-music"></i>
         </button>
       </div>
     </div>
