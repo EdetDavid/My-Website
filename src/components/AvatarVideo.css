@@ -1,0 +1,73 @@
+.avatar-video-section {
+  margin-top: 3rem;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.avatar-video-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #60a5fa, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.avatar-video-wrapper {
+  display: inline-block;
+  position: relative;
+  border-radius: 24px;
+  padding: 6px;
+  background: linear-gradient(45deg, #60a5fa, #a78bfa, #f472b6, #fbbf24);
+  animation: aura 4s ease infinite;
+}
+
+@keyframes aura {
+  0% {
+    box-shadow: 0 0 16px #60a5fa;
+  }
+  50% {
+    box-shadow: 0 0 32px #f472b6;
+  }
+  100% {
+    box-shadow: 0 0 16px #60a5fa;
+  }
+}
+
+.avatar-video {
+  border-radius: 18px;
+  width: 100%;
+  max-width: 640px;
+  display: block;
+}
+
+/* iframe-specific rules */
+.avatar-video-wrapper iframe.avatar-video {
+  border-radius: 18px;
+}
+
+.avatar-video-glow {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 28px;
+  filter: blur(12px);
+  background: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+/* responsivity */
+@media (max-width: 768px) {
+  .avatar-video-title {
+    font-size: 2rem;
+  }
+  .avatar-video-wrapper {
+    padding: 4px;
+  }
+  .avatar-video {
+    max-width: 100%;
+  }
+}

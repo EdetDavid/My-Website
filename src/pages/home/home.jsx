@@ -6,6 +6,7 @@ import SkillsMobile from "../../components/skills-mobile";
 import MyChartComponent from "../../components/chart";
 import ContactSection from "../../components/contact-form";
 import SocialLinks from "../../components/social-icons";
+import AvatarVideo from "../../components/AvatarVideo";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -52,6 +53,13 @@ const glowStyles = [
   },
 ];
 
+// glow style specifically for the avatar video section
+const videoGlow = {
+  boxShadow: "0 0 40px 0 #7c3aed, 0 0 10px 0 #a78bfa",
+  background: "linear-gradient(90deg, rgba(124,58,237,0.08) 0%, rgba(167,139,250,0.08) 100%)",
+  borderRadius: "18px",
+};
+
 const Home = () => {
   return (
     <>
@@ -64,6 +72,18 @@ const Home = () => {
       >
         <Showcase />
       </motion.div>
+
+      {/* avatar video section */}
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        style={videoGlow}
+      >
+        <AvatarVideo />
+      </motion.div>
+
       <motion.div
         variants={sectionVariants}
         initial="hidden"
