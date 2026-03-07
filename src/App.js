@@ -6,6 +6,7 @@ import BackToTop from "./components/BackToTop";
 import Footer from "./components/footer";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Preloader from "./components/Preloader";
+import MouseEffect from "./components/MouseEffect";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -45,6 +46,7 @@ const App = () => {
   return (
     <DarkModeProvider>
       <div className="App" id="App">
+        <MouseEffect />
         {/* Show preloader without navbar during initial load */}
         {isLoading && <Preloader />}
         
